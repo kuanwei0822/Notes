@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<script>
+React本身使用JSX語法
+
+React內部可以使用JS語法
+
+起手式:
+	
+	i. 引入套件:
+		import React from "react";
+		import ReactDOM from "react-dom";
+
+
+</script>
+<script>
+創造元素(語法版):
+	// 比較複雜，且如果元素裡面有很多子元素，就要用一堆React.createElement
+	
+	const E = React.createElement("元素名稱","要加入的html屬性","元素內容 html.innerHTML")
+	
+	const E = React.createElement("input",{
+	
+		i. 要加入的html屬性:
+		// 若不需要則給一個空{}
+		
+			I. 替創造的元素加上html屬性
+			// <input id="id1" class="class1" readonly >
+			// <label for="id1"></label>
+				id:"id1",			// 一般屬性
+				className:"class1",	// class屬性要用特定字className
+				readOnly: true,		// 單獨沒有值的屬性要給true,且要用駝峰式寫法
+				htmlFor:"id1",		// for屬性要用特定字htmlFor(駝峰式寫法)
+		
+			II. 替創造的元素加上css樣式
+			// <input style="color:red;background-color:blue;">
+				style: {
+					color:"red",			// 一般樣式
+					backgroundColor:"blue",	// 有'-'要用駝峰式寫法
+				},
+			
+			III. 替創造的元素加上on事件
+			// <input onclick="func1()">
+				onClick:func1,	//要用駝峰式寫法，'='變':'，func1不用括號
+		},
+		
+	ii. 要加入的元素內容:
+		
+		I. 加入單純字串內容:
+		// 視同innerHTML
+			"1234abc"
+			
+		II. 加入其他子元素:
+		
+			I. 加入一個:
+				單純放入 E1(已經被設定為元素)
+				// const E1 = React.createElement("li",{},"123");
+			
+			II. 加入兩個以上:
+				//需要用包裹[]
+				[E1,E2...]
+	);
+
+創造元素(世界簡單版):
+	// 以直觀方式建立，可以輕易有很多子元素
+	// 甚至可以用html碼來更改，只要注意 結尾標籤+屬性寫法
+	
+	// 注意:
+	// i. 原本html 有些標籤如:<input>沒有結尾標籤，在React中是需要結尾標籤的
+	//    如果沒有，就要自己結尾: <input></input> 或 <input /> 皆可以。
+	// ii. 屬性寫法與html略有不同
+	
+	i. 以直觀的方式建立元素、子元素、多層元素:
+		// const E1 = 
+		//	<ul>
+		//		<li>123</li>
+		//		<li>456</li>
+		//	</ul>;
+	
+	ii. 替元素增加html屬性:
+		// 屬性之間可以空格或換行隔開
+		// 可以使用等於來表示屬性值，but所以有值一定要用一個大括號
+		// class: 要用className
+		// style: 要用上兩個{}，就算內容只有一個也是，屬性以,代替原本的;，值也需要""
+		// 第一個{}代表style的值需要的大括號，第二個是因為CSS樣式要以object方式寫入，
+		// 需要用到{}。內容一樣要駝峰式寫法。
+		// 事件: 一樣要駝峰式寫法，可以使用匿名函式
+		// 一般函式Ex: onClick={ func1 };
+		// 匿名函式Ex: onClick={ ()=>{...} };
+		
+			//	const E1 = <input 
+		//		id={"id1"}
+		//		className={"class1"}
+		// 		style={{
+		//			backgroundColor:"red",
+		//			color:"yellow"
+		//		}}
+		//		onClick={()=>{console.log("cvv")}}
+		//	/>
+		
+移動元素:
+	
+	i. React.render(e,E);
+		// 將 e 元素加為 E 元素的子元素
+		
+function函式應用:
+
+	i. 宣告函式:
+		// 有兩種宣告方式
+		
+		I. function func1(){...}
+			// 和JS一模一樣
+		
+		II. const func1= ()=>{...}
+			// 相當於JS的 const func1 = function(){...};
+
+	ii. 匿名函式:
+		
+		()=>{...}
+			// 相當於JS的 function(){...};
+			
+	iii. 元素使用函式:
+	
+		// <button onClick={func1}>Ex</button>
+		// 	呼叫函數
+		// <button onClick={()=>{...}}>Ex</button>
+		// 	使用匿名函數
+		
+元件:
+	
+	I. 建立元件:
+		// 以.js檔建立
+		// 以駝峰方式命名
+		
+		新增檔案: TextElement.js
+
+	II. 建立、輸出元件:
+			
+		i. 起手式:
+			//	import React from "react";
+			//
+			//	const TextElement = (props)=>{
+			//		內容...
+			//		return <div />;
+			//	}
+			//	export default TextElement;
+			
+			// props提供一個外部輸入參數的功能(以自定義屬性方式傳入)
+			// 再套用在元件檔案中，達成新增功能的效果
+			// 主檔案可以用<TextElement abc={"10"} />
+			// 以自定義屬性的功能傳入abc值為10
+			// 在元件檔案中即產生 props.abc 且值為10;
+			// 可以用 const a = props.abc; 等方式承接值。
+			
+			// props也可以使用在傳入一整個函式
+			// 主檔案可以用<TextElement funx={()=>{...}} />
+			// 以自定義屬性的功能傳入funx這個匿名函式
+			// 再應用到元件檔案中: <button onClick={props.funx}>...</button>
+			// 這樣等於是 onClick={ ()=>{...}} }等於這個匿名函式
+			
+			// props.children可以傳入標籤的內容值(innerHTML)
+			// 而大部分props都是以自定義屬性傳入參數
+			// Ex: 
+			// 主檔案: <TextElement>abcd</TextElement>
+			// 元件檔: return <button>{props.children}</button>
+			// 主檔案的abcd原本是不會顯示的，
+			// 使用props.children才會從主檔案傳入到元件檔裡面
+			
+			
+			// return一次只能回傳一個標籤
+			// 若有多個標籤可以使用: <></>包裹
+			// Ex: <><button>123</button><button>456</button></>
+			// 元素內容要包含變數需要用{}刮起來
+			// Ex: <button>123{a}</button>
+			
+	III. 主檔案引入元件:
+		// 以import引入外部元件
+		
+		import TextElement from "./TextElement";
+			// "./"代表與當下元件同一個資料夾
+			// 引入元件不用副檔名
+			// 通常會用同樣名稱命名變數		
+			
+	IV. 主檔案引入後使用元件
+		// 以元件名稱作為一個標籤，記得要自行加一個結束標籤
+		
+		// <TextElement /> 可以任意使用
+		
+元件:有關state
+	// React重繪觸發: state & props 改變
+
+	i. 宣告元件:
+		const sta = React.useState("10");
+		// sta 為一個陣列型態:
+		// sta[0]為state的值，唯讀
+		// sta[1]為state函式，用來更改state值
+		// 用法: sta[1](要改的值) 即可更改
+	
+		// 可以重複宣告多個不同state，只要宣告名稱不同即可
+			const sta = React.useState("10");
+			const star = React.useState("100");
+		// 分別有兩個state被存在 sta & star
+
+</script>
+-----------------------------------------------------------------
+<script>
+觀念:
+
+# 有關ES6:
+	ES6是javascript的最新語法規範，內容包含各種javascript的函式使用方法，
+	比方說var,const,let等等的用法。
+
+# 有關宣告變數的作用域:
+	
+	i. 函式作用域: var
+		以function做為區隔變數的標準。
+		
+	ii.區塊作用域: let, const
+		以if,for ...等等區塊作為區隔的標準。
+		
+# 宣告變數時 by value & by reference 的差別
+	// 宣告某些變數時帶有的特性，無法修改
+	
+	i. by value: 
+		// array跟object宣告以外的。
+		
+		// 以記憶體存取變數a，若有新變數b指定a，則會使用到一個新記憶體存給b存取，
+		// 兩個記憶體區塊是分開，互不相干的，a改變，b當然還是不變。
+			var a = 10;
+			var b = a; 
+			a = 20;
+		// a = 20, b = 10;
+	
+	ii. by reference: 
+		// array跟object宣告都是屬於這種。
+		
+		// 以記憶體R存取變數，a用來指向記憶體R，若有新變數b指定a，
+		// 則b也指向記憶體R。a & b 都指向記憶體R，當a更改記憶體R，
+		// 則b也會變，因為b也指向記憶體R，同理b更改，a也會變。
+			var a =['aa','bb'];
+			var b = a;
+			a.push('cc');
+		// a = ['aa','bb','cc'], b = ['aa','bb','cc']
+		
+
+</script>
+--------------------------------------------------------------------
+??
+export 用法
+
+
