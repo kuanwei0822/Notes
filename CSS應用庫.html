@@ -843,6 +843,7 @@
 	960system:
 	
 	
+	
 技法:
 	# inline-block中間的空白字元清除:
 	父元素div{
@@ -930,6 +931,27 @@
 		子block{ height:100vh }，也有同樣效果，只是換成內容物撐高html,body的高度。
 		
 	#<input type="checkbox"> + <label>可以模擬程式觸發的效果
+	
+	#有關裝置大小(大部分):
+	手機: 360 x 640
+	平板則是786 x 1024
+	電腦是1366 x 768
+	
+	#單位意義:
+	px: 一個像素
+	cm: 公分
+	em: 相對單位，相對於該元素本身字體大小(font-size)，1em為一倍。
+		若無設定，則會找到有設定font-size的父元素作為相對依據。
+	rem:相對單位，相對於根元素字體大小(font-size)。
+	
+	#@media條件: [media type] and ([media feature])
+				 符合單一條件
+				 
+				 [media type] and ([media feature]) and ([media feature])
+				 要同時符合兩條件
+
+				 [media type] and ([media feature]), [media type] and ([media feature]),
+				 符合任一條件
 ----------------------------------------------------------------------
 ??
 段落縮排:
@@ -940,6 +962,7 @@ display:table,table-row,table-cell
 text-indent
 data-XXX
 width:5em(em大小單位)
+visible hidden
 
 進階??:
 表格RWD

@@ -123,6 +123,8 @@
 				// 一次取得所有X的屬性節點，y為屬性節點的陣列
 				// 可以使用y[0],y[1]...來取得屬性節點
 				// 也可以用y["class"],y["id"]...取得要的特定屬性節點
+				
+				// 注意: 得到的節點還是要用 .value 才能取得值
 	
 			III. 文字節點: 時常伴隨childNodes取得... 
 			
@@ -214,22 +216,22 @@
 		
 		viii. 節點的屬性(屬性節點):得到、新增 id,class 等屬性:
 		
-			i. var y = X.attributes: 得到所有'屬性節點'
+			i. var y = X.attributes: 得到所有'屬性節點' (可讀可寫)(by reference)
 				
 				// 同上面的筆記，一次取得所有X的屬性節點，y為屬性節點的陣列
 				// 可以使用y[0],y[1]...來取得屬性節點
 				// 也可以用y["class"],y["id"]...取得要的特定屬性節點
 				
 				// 屬性節點不可以使用 X.appendChild(y)來插入節點
-				// 可以使用y.nodeValue來取得節點屬性值(比較常使用)
+				// 可以使用y.nodeValue 或 y.value 來取得節點屬性值(比較常使用)
 				// 這邊的y.nodeType等於2，是節點型態
 				
-			ii. var att = X.getAttribute("id"): 得到特定'屬性值'
+			ii. var att = X.getAttribute("id"): 得到特定'屬性值' (get可讀,set可寫)
 			
 				// 將會回傳指定的屬性值
 				// 這邊的att.nodeType等於undefined，單純為一個值
 			
-			ii. var att = X.id: 得到特定'屬性值'(陽春版)
+			iii. var att = X.id: 得到特定'屬性值' (陽春版)(可讀可寫)
 			
 				// X.id = "id1"
 				// X.className = "class1"
@@ -237,7 +239,7 @@
 				// 和getAttribute效果一樣
 				// att.nodeType等於undefined，單純為一個值
 				
-				// html的 data-abc 自定義屬性無法取得
+				// html的 data-abc 必須使用: X.dataset.abc 取得
 				
 			iv. X.setAttribute("id","id1"): 設定屬性值
 				
@@ -417,7 +419,8 @@
 			// var a = str.indexOf("a",4); 結果是9，跳過位置是3的a
 		
 		iv. str.substring(0,5): 擷取字串
-			//  擷取從str[0]~str[4]的字串並回傳(不含5)，原本的字串不會被改變
+			// 擷取從str[0](start包含自己[0])~str[4](end不包含自己[5])的字串並回傳(不含5)，
+			// 原本的字串不會被改變
 			
 			// str = "0123456789";
 			// var a =  str.substring(1,5);
@@ -943,7 +946,35 @@
 	
 	# break用法:
 		// 中斷for,while,switch的執行
+	
+	11/29
+	
+	# 同步 & 非同步
+	
+	# 靜態網頁 & 動態網頁
+		i. 靜態網頁:
+			// 單純使用 html/css/javascript 等語言的網頁。
+			// 沒有與伺服器互動。
+			// github 有功能可以顯示靜態網頁。
 		
+		ii. 動態網頁:
+			// 除了單純網頁之外，可以透過網頁與伺服器互動。
+			// 擁有更高的互動性，方便維護其功能。
+			// 目前使用git無法做到，但可以建立適合環境模擬效果。
+	
+	# == 跟 === 差別:
+		
+		i. 兩個等於: 會轉換型別比較
+			// EX: "1" == 1 是 true ，前面1是字串，後面是數字。
+			// But 會轉換成同一型別比較。
+		
+		ii. 三個等於: 連資料型態都要相同才true 
+			// "1" === 1 是 false ，因為資料型態也要是相同才行。
+			
+	# Why CSS、JavaScript放 head 裡比較好
+		// 在 HTML 渲染之前，我們就已經拿到 CSS 與 JavaScript 檔案，
+		// 避免使用者看到沒有被 CSS 美化過的頁面。
+	
 </script>
 <script>
 技法:
