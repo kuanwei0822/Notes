@@ -2,7 +2,7 @@
 // 註 2020/10月後，master 改為 main ，功能意義一樣。
 
 
-1. 設立Local專案資料夾
+1. 設立Local專案資料夾(配合2.建立新專案)
 資料夾
 $ git init 
 // 設為專案資料夾(檔案庫)
@@ -39,6 +39,14 @@ $ git push -u origin master
 	iv. 同步完成。可以直接編輯自己電腦的檔案再 push 上去。
 
 4. 檔案改名:
+	
+	i. 在 local 端，直接複製要改的檔案，並更改名子。
+	
+	ii. git push 上 remote 端。
+	
+	iii. Local 端原本的(為改名的)檔案刪除。
+	
+	iv. git push again， Remote 端會自動刪去 local 端刪除的檔案。
 
 5. repository 裡的資料夾改名:
 	
