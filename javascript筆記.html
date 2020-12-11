@@ -608,8 +608,30 @@
 			
 			// X.removeEventListener("click",func1);
 			// 注意: 使用匿名函示，則無法移除。另外移除後事件冒泡還是觸發的到。
-			
-			
+	
+	資料型態:類別
+
+		i. 宣告: 
+
+			class AA{
+				constructor(a,b){
+					this.A = a 
+					this.B = b
+					this.C = function(){
+						return a + b ;
+					}
+				}
+			}
+	
+		ii. 使用:
+
+			var obj = new AA(100,200);
+				// obj 被建立為物件:
+				// 	AA{
+				//		A: 100
+				//		B: 200
+				//	}
+
 	10/16
 	縮小範圍的物件類別搜尋:
 		// 可用 X.getElementsByTagName("xxx");
