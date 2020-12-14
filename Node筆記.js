@@ -23,6 +23,24 @@
 
 # npm -v
 	// npm 版本
+
+# 安裝模組:
+	
+	全域(指令哪裡打都可以): npm install XXX -g
+		已安裝:
+		*> nodemon 
+			(方便 build ，命令提示字元:node XXX.js 改為 nodemon XXX.js 
+			 Sublime 不用再 Cancel Build 了，直接存檔重新整理網頁就可以再次執行了，超級方便)
+		*> express
+
+		 > body-parser
+		 	(環境中 Server 端接收 POST 時需要用到的中介程式，用來解析以 URL 編碼的內文)
+
+		 > mongodb
+		 	(安裝 Mongo DB driver，讓 node 可以連結並使用 mongodb 資料庫)
+
+	特定專案(指令要打在專案裡): npm install XXX --save
+
 --------------------------------------------------
 建立專案 + 替專案安裝express套件:
 	// 官方說明: https://expressjs.com/zh-tw/starter/installing.html
@@ -184,3 +202,51 @@ em.emit("abc")		// X.emit觸發事件
 
 -------------------------------------------------
 Express 使用:大幅減少複雜程式碼，更簡單功能分類
+
+
+
+
+
+
+-------------------------------------------------
+資料庫安裝:
+MongoDB
+
+
+#服務啟動:
+
+命令提示字元中(一定要從工作管理員中啟動)
+路徑 C:\\Program Files\MongoDB\Server\4.4\bin 中
+
+啟動服務: net start MongoDB
+
+停止服務: net stop MongoDB
+
+附註:
+// log + window service 啟用命令:
+// mongod --dbpath "D:\MongoDB\datd\db" --logpath "D:\MongoDB\data\log\mongodb.log"  --install --serviceName "MongoDB"
+
+
+#MongoDB現狀查詢:  mongoDB shell
+
+命令提示字元中
+路徑 C:\\Program Files\MongoDB\Server\4.4\bin 中輸入 mongo.exe 啟動 mongoDB shell 環境
+
+查看有那些資料庫: show dbs
+
+查看當前連線在哪個資料庫: db
+
+查看資料庫內容: 
+
+	i. use xxx
+	// xxx 為資料庫名子，預設為test，可以用 db查詢
+
+	ii. show collections
+	// 會顯示所有collection(資料表)
+
+	iii. db.ccc.find()
+	// ccc 為資料表名稱
+	// 送出指令後會顯示出所有資料，每筆以{}包住
+
+離開: exit
+
