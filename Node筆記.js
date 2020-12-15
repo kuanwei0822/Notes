@@ -252,10 +252,69 @@ MongoDB
 
 
 ---------------------------------------------------
+12/15
 // todolist 功能解說
 // node 專案結構解說 + 建立專案指令
 // jade教學: https://ithelp.ithome.com.tw/articles/10186637
+// 官方新版pug引入教學 https://expressjs.com/zh-tw/guide/using-template-engines.html
+// 官方建立專案範例 http://expressjs.com/zh-tw/starter/generator.html
 	
-
 	
 // express3->4 版本的變更: https://expressjs.com/zh-tw/guide/migrating-4.html
+
+---------------------------------------------------
+npm 安裝 Express 應用程式產生器 :npm install express-generator -g
+和直接安裝 express 不一樣，這個可以幫助我們使用特殊指令新增專案資料夾
+
+npm 安裝pug樣板引秦 npm install pug --save
+---------------------------------------------------
+1. 專案裡增加: serverjade.js 作為引入樣板的程式
+
+const express = require("express");
+const app = express();
+
+
+app.set("view engine","pug");		// 樣板引擎種類
+app.set("views",'./views');			// views 為 index 的目錄(樣版資料夾)
+// 如果要自訂樣版存放資料夾，app.set(“veiws","自訂樣版存放資料夾絕對路徑")
+
+app.get('/', function (req, res) {
+    res.render('index');  // render: 渲染網頁
+});
+ 
+var server = app.listen(5000, function () {
+    console.log('Node server is running..');
+});
+
+2. views 資料夾裡面 index.pug 寫入已經jade轉譯完成的 jade code
+
+doctype html
+html
+  head
+    title todolist
+    | &#x9;&#x9;
+    meta(charset='utf-8')
+  | &#x9;
+  body
+    form(action='http://127.0.0.1:5000/data1', method='POST')
+      input(name='todo', type='text')
+      | &#x9;&#x9;&#x9;
+      input(type='submit')
+
+附上html code
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>todolist</title>
+		<meta charset="utf-8" />
+	</head>
+	<body>
+		<form action="http://127.0.0.1:5000/data1" method="GET" >
+			<input name="todo" type="text" />
+			<input type="submit" />
+		</form>
+	</body>
+</html>
+
+3. 命令提示字元執行  serverjade.js 檔案
+4. 瀏覽器輸入 127.0.0.1:5000/ 產生html網頁
