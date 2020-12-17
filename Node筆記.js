@@ -27,11 +27,17 @@
 # 安裝模組:
 	
 	全域(指令哪裡打都可以): npm install XXX -g
+	特定專案(指令要打在專案裡): npm install XXX --save
+	
 		已安裝:
 		*> nodemon 
 			(方便 build ，命令提示字元:node XXX.js 改為 nodemon XXX.js 
 			 Sublime 不用再 Cancel Build 了，直接存檔重新整理網頁就可以再次執行了，超級方便)
 		*> express
+			(express 本身)
+
+		*> express-generator
+			( Express 應用程式產生器和直接安裝 express 不一樣，這個可以幫助我們使用特殊指令新增專案，通常都是全域安裝 )
 
 		 > body-parser
 		 	(環境中 Server 端接收 POST 時需要用到的中介程式，用來解析以 URL 編碼的內文)
@@ -39,10 +45,11 @@
 		 > mongodb
 		 	(安裝 Mongo DB driver，讓 node 可以連結並使用 mongodb 資料庫)
 
-	特定專案(指令要打在專案裡): npm install XXX --save
+		 > pug
+		 	( 安裝pug樣板引擎，之前叫 jade 改名)
 
 --------------------------------------------------
-建立專案 + 替專案安裝express套件:
+建立單一資料夾環境 + 替專案安裝express套件:
 	// 官方說明: https://expressjs.com/zh-tw/starter/installing.html
 
 	1. 手動新增資料夾 or 命令提示字元 mkdir name 建立資料夾
@@ -56,6 +63,15 @@
 	   package 檔案，會記錄已安裝 express 並顯示版本。
 
 	4. 新增一個名為 index.js 檔案，開始coding
+
+建立專案:
+	// 官方說明: http://expressjs.com/zh-tw/starter/generator.html
+
+	1. 全域安裝 npm install express-generator -g
+
+	2. 命令提示字元到要建立專案的地方輸入: express -h
+
+	3. 輸入: express --view=pug todolist 即可建立專案
 
 --------------------------------------------------
 有關 Build 以及 port(埠)佔用問題:
@@ -203,10 +219,43 @@ em.emit("abc")		// X.emit觸發事件
 -------------------------------------------------
 Express 使用:大幅減少複雜程式碼，更簡單功能分類
 
+1. express 下一般 API 使用
+	
+	const express = require("express");
+	const app = express();
 
+	app.get("/data1",function(req,res){		// get方法，route為/data1
+		res.sendFile(__dirname+'./page.html');
+	});
 
+	app.post("/data2",function(req,res){	// post方法，route為/data2
+		res.send(req.body.firstName + req.body.lastName);
+	});
 
+	var server = app.listen(5000,function(){
+		console.log("ok")
+	});
 
+2. express 4 版本之後 API 可以使用 Router 來管理路由 
+	
+		const express = require("express");
+		const router = express.Router();
+
+		router.get("/data1",function(req,res){		// get方法，route為/data1
+			res.sendFile(__dirname+'./page.html');
+		});
+
+		router.post("/data2",function(req,res){	// post方法，route為/data2
+			res.send(req.body.firstName + req.body.lastName);
+		});
+
+		module.exports = router;
+
+	可以被引用至主要檔案 app.js
+
+		const data1 = require('./data1');
+
+		app.use('/資料夾', data1);
 
 -------------------------------------------------
 資料庫安裝:
@@ -263,58 +312,3 @@ MongoDB
 // express3->4 版本的變更: https://expressjs.com/zh-tw/guide/migrating-4.html
 
 ---------------------------------------------------
-npm 安裝 Express 應用程式產生器 :npm install express-generator -g
-和直接安裝 express 不一樣，這個可以幫助我們使用特殊指令新增專案資料夾
-
-npm 安裝pug樣板引秦 npm install pug --save
----------------------------------------------------
-1. 專案裡增加: serverjade.js 作為引入樣板的程式
-
-const express = require("express");
-const app = express();
-
-
-app.set("view engine","pug");		// 樣板引擎種類
-app.set("views",'./views');			// views 為 index 的目錄(樣版資料夾)
-// 如果要自訂樣版存放資料夾，app.set(“veiws","自訂樣版存放資料夾絕對路徑")
-
-app.get('/', function (req, res) {
-    res.render('index');  // render: 渲染網頁
-});
- 
-var server = app.listen(5000, function () {
-    console.log('Node server is running..');
-});
-
-2. views 資料夾裡面 index.pug 寫入已經jade轉譯完成的 jade code
-
-doctype html
-html
-  head
-    title todolist
-    | &#x9;&#x9;
-    meta(charset='utf-8')
-  | &#x9;
-  body
-    form(action='http://127.0.0.1:5000/data1', method='POST')
-      input(name='todo', type='text')
-      | &#x9;&#x9;&#x9;
-      input(type='submit')
-
-附上html code
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>todolist</title>
-		<meta charset="utf-8" />
-	</head>
-	<body>
-		<form action="http://127.0.0.1:5000/data1" method="GET" >
-			<input name="todo" type="text" />
-			<input type="submit" />
-		</form>
-	</body>
-</html>
-
-3. 命令提示字元執行  serverjade.js 檔案
-4. 瀏覽器輸入 127.0.0.1:5000/ 產生html網頁
