@@ -444,9 +444,12 @@
 			// var obj = new Object();
 			// var obj = {};
 				obj={
-					name:"abc",
-					age:10,
-					data:["11","26","33"]
+					name :"abc",
+					age  :10,
+					data :["11","26","33"],
+					func  :function(){
+						...
+					}
 				}
 			// 物件內包含 key : value ;
 		
@@ -828,6 +831,37 @@
 			// a=10 傳入func1之後運算出來的B就會藉著return回傳出來，以一個變數c承接。
 			// 注意:return有break效果，return之後，return以下的程式碼皆不再執行
 	
+	# function 函式運算式 (Function Expressions):
+
+		i. 函式已經被宣告，然後被指定給某個變數:
+			// function func1(){...}
+			// var a = func1;
+
+			// 此時 func1() 尚未被觸發，只是將 func1 指定給 a
+			// a() 即可觸發 func1(){} 的內容。
+
+		ii. 函式被宣告並執行，然後再傳 return 給變數:
+			// function func2(){... return x }
+			// var a = func2();
+
+			// 此時 func2() 已經被觸發，並將 retun 值 x 回傳給 a
+
+		iii. 綜合 i,ii 整理:
+			// var a = func1 ;  就是把 func1 整個函式指定給 a ，使 a 變成函式函數( 不觸發函式 )。
+			// var a = func1(); 是執行了 func1() 函式之後，把 return 賦值給 a。
+
+	# function 函式宣告當下即呼叫(立即呼叫函式 IIFE):
+
+		i. 一般宣告+呼叫函式:
+			// function func1(x){...};
+			// func1(10);
+
+		ii. 宣告當下立即呼叫函式:
+			// (function func2(x){...})(10)
+
+			// 也可以使用匿名函式:
+			// (function(x){...})(10)
+
 	# 全域function 區域function
 		// 和區域變數、全域變數原理一樣:
 		// 一般function皆為全域function，可以再任意地方使用，包括別的函式裡面。
@@ -957,8 +991,9 @@
 		// obiect		(兩種: {}空元素 or 元素物件 )
 		// function		(function(){;})
 		
-		// 解釋:javascript中資料型態只有分 number,string,boolean,undefined,Null
+		// 解釋:javascript中資料型態( 基本型別 )只有分 number,string,boolean,undefined,Null
 		
+		// number 數字
 		// string 一定要用雙引號刮起來
 		// boolea n 只有兩種:true, false
 		// undefined 任何未定義之變數， EX: var x ; x未被指定任何值(有定義but沒初始化)，即為undefined
@@ -993,11 +1028,193 @@
 		
 		ii. 三個等於: 連資料型態都要相同才true 
 			// "1" === 1 是 false ，因為資料型態也要是相同才行。
-			
+
+			// 注意: 當比較對象是物件類別時
+			//	var obj1 = { a:1 };
+			//	var obj2 = { a:1 };
+			//  obj1 === obj2 為 false
+			// 當比較對象是物件時，會比較的不是內容，而是指向的記憶體位置。
+			//
+			// 當改成:
+			//	var obj1 = { a:1 };
+			//	var obj2 = obj1;
+			//  obj1 === obj2 為 true 因為他們都指向同一塊記憶體
+
 	# Why CSS、JavaScript放 head 裡比較好
 		// 在 HTML 渲染之前，我們就已經拿到 CSS 與 JavaScript 檔案，
 		// 避免使用者看到沒有被 CSS 美化過的頁面。
+
+
+	# 宣告變數時 by value & by reference 的差別
+		// 宣告某些變數時帶有的特性，無法修改
 	
+		i. by value: 
+			// array跟object宣告以外的。
+			
+			// 以記憶體存取變數a，若有新變數b指定a，則會使用到一個新記憶體存給b存取，
+			// 兩個記憶體區塊是分開，互不相干的，a改變，b當然還是不變。
+				var a = 10;
+				var b = a; 
+				a = 20;
+			// a = 20, b = 10;
+	
+		ii. by reference: 
+			// array跟object宣告都是屬於這種。
+			
+			// 以記憶體R存取變數，a用來指向記憶體R，若有新變數b指定a，
+			// 則b也指向記憶體R。a & b 都指向記憶體R，當a更改記憶體R，
+			// 則b也會變，因為b也指向記憶體R，同理b更改，a也會變。
+				var a =['aa','bb'];
+				var b = a;
+				a.push('cc');
+			// a = ['aa','bb','cc'], b = ['aa','bb','cc']
+
+	# call by value & call by reference:
+
+		i. call by value:
+			// var a = 10;
+			// var b = a;
+			// a 把值 copy 給 b ，a 與 b 互不影響。
+
+		ii. call by reference:
+			// var a = { x:10 }
+			// var b = a;
+			// a 宣告時會在記憶體中建立一個物件，並指向那塊記憶體。b = a 則是使 b 和 a 一樣指向同一塊記憶體。
+			// 當 a 或 b 改變時，他們都會更改到同一塊記憶體內容。 
+
+	# 淺拷貝（Shallow Copy）& 深拷貝（Deep Copy）:
+		// 當物件或陣列需要再複製一份出來的時候分為 深拷貝 & 淺拷貝。
+		// 單純一個物件的複製使用 深拷貝 或 淺拷貝是沒什麼差別的
+		// But 當 物件或陣列裡面還有物件的時候會有差別。
+
+		i. 淺拷貝: 
+			// 使用淺拷貝時，若物件或陣列裡面有物件，則裡面的物件仍然是共用同一個記憶體(未完全複製)。
+			// 物件: Object.assign()
+			// 陣列: slice()
+
+		ii. 身拷貝:
+			// 使用身拷貝時，若物件或陣列裡面有物件，則裡面的物件將會被分配到不一樣的記憶體(
+			// 完全分到另一塊記憶體)
+			// 物件:  jQuery 的 $.extend()
+
+	# 全域變數 & 區域變數:
+
+		i. 全域變數:
+			// 函式(function)外宣告的變數，為全域變數。
+			// 程式內所有地方都可以存取。
+
+			// 缺點:
+			// 當引入許多其他程式的時候，可能因為變數名稱一樣，導致錯誤。
+
+		ii. 區域變數:
+			// 函式(function)之內宣告的變數，為區域變數。
+			// 只可在 function 內部存取。
+
+			// 優點:
+			// 區域變數在 function 執行完之後，將會被銷毀，避免記憶體使用過大。
+
+	# hosting( 提升 )
+
+		i. 何謂宣告?
+			// 宣告分為2種，變數宣告，函式( function )宣告
+
+			// var a ;					此為變數宣告(內容為 undefined)
+			// function func1(){...}; 	此為函式宣告(內容包含 ... 函數的內容)
+
+			// var a = 10 ; 	實際上有兩個動作 
+			// 1. 宣告變數 a
+			// 2. 指定10給 a 變數
+			//
+			// var b = function(){...} ; 	實際上也有兩個動作
+			// 1. 宣告變數 b
+			// 2. 指定 function(){...} 給變數 b
+
+		ii. 有關程式執行:
+			// 程式執行分為兩階段:
+			// 1. 第一階段: 只處理宣告( 變數、function )，空出需要的記憶體。
+			// 2. 第二階段: 執行程式( 此時已經全部宣告好了 );
+
+		iii. Hoisting:
+			// 程式內的所有變數，function 都被事先宣告完成，才會開始執行程式。
+			// 也就是第一階段被稱為 Hoisting ( 提升 )。把'變數宣告'這個動作'提升'到程式最上面。
+
+		iv. Hoisting 作用範圍:
+			// 以 Scope 作用域( 以 function 區分 )作為 Hoisting 範圍。
+			
+			// EX: 
+			//	var x = 10;
+			//	func1();
+			//	
+			//	function func1(){
+			//		console.log(x);		// 顯示 undefined ;
+			//		var x = 20;
+			//	}
+			//	console.log(x);			// 顯示 x = 10 ;
+			//
+			// 重點一:
+			//   一開始宣告 x = 10 沒有問題。
+			//   func1 裡再次宣告 var x =20，此時 func1 裡的 x 和外面的 x 分別是兩個不相干變數不互相影響。 
+			//  
+			// 重點二:
+			//   func1 裡 x 既然和外面不相干，當然也適用 hoisting ，所以裡面的 x 在func1 
+			//   一開始就會被宣告，但還不會被賦值。
+			// 
+			//   視同:
+			//	 function func1(){
+			//	 	var x;
+			//	 	console.log(x);		// 顯示 undefined ;
+			//	 	x = 20;
+			//	 }
+			// 
+			//   而外面的 x 因為沒有被 func1 改變，所以仍然維持 x = 10 
+			//
+			// 重點三:
+			//   改成:
+			//	 var x = 10;
+			//	 func1();
+			//	
+			//	 function func1(){
+			//	 	console.log(x);		// 顯示 x = 10;
+			//	 	x = 20;			    // 這邊改以賦值，不使用宣告
+			//	 }
+			//	 console.log(x);			// 顯示 x = 20;
+			//
+			//   因為 func1 內的 x 並沒有被宣告，所以就往 function 外找，找到外面的 x
+			//   因此，func1 內的 x 就是外面的 x 啦! 所以第一個 x = 10;
+			//   而 func1 內對 x 的更改會生效，所以第二個 x = 20;
+
+	# 閉包 Closure:
+			// 程式碼:
+			//
+			//	var msg = "global."
+			//
+			//	function outer() {
+			//	  var msg = "local."
+			//
+			//	  function inner() {
+			//	    return msg;
+			//	  }
+			//
+			//	  return inner;
+			//	}
+
+			// 以上程式碼依照 scope 劃分，可以分為: global區 -> outer區 -> inner區 ，各有父子關系。 
+			//
+			// 直觀來看 inner區 裡 msg 變數並沒有被宣告，所以會往外找到 outer區，以 outer區 
+			// 的變數作為裡面的變數。也就是 var msg = "local."
+			//   
+			// 若加入程式碼: 
+			//  var aa = outer();	// aa 取得 outer 函式 return 的 inner 函式。
+			//	var bb = aa();		// bb 取得 inner 函式 return 的 msg 結果。
+			//
+			//	console.log(bb);	// bb 會顯示 local.
+			//
+			// 雖然 inner 函式被取出來執行，但是當 inner 函式被回傳後，其實也會記得當時的環境，也就是 inner 
+			// 函式仍然記得自己是 outer區 下的函式。而非被取出來就變 global區 下的函式。
+			// 所以 bb 顯示自己記住的上一層 outer區 ，顯示 local. 而非 global
+			
+			// 這種除了 global 還夾了兩層以上的函式被稱為 閉包，可以把變數鎖起來，不會用到全域變數。
+
 </script>
 <script>
 技法:
@@ -1071,3 +1288,20 @@
 </script>
 -----------------------------------------------------------------------------------
 ?? ??
+
+/*		
+	執行結果不一樣?
+	for(let i = 1 ; i<=5 ; i++ ){
+		console.log(i);
+		window.setTimeout(function(){
+			console.log(i);
+		},1000);
+	}
+
+	for( var i = 0; i < 5; i++ ) {
+		console.log(i);
+	  	window.setTimeout(function() {
+	    console.log(i);
+	  }, 1000);
+	}
+*/
