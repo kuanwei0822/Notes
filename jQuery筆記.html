@@ -36,7 +36,7 @@
 	<head>
 		<script type="text/javascript">
 		
-		起手式( 同window.onload() ):
+		起手式( 同 window.onload() ):
 			// i & ii 一樣，只是寫法不同
 		
 		i.	$(document).ready(function(){
@@ -150,7 +150,7 @@
 		// 可以參考JS事件
 		
 		I. jQuery 特別事件:
-			.ready
+			.ready()
 			// jQuery 的起手式 $(document).ready(function(){...})
 			// 幾乎類似 JS 開頭的 window.onload = function(){...} 用法
 			// 可以當作都是文件備妥之後，再觸發的程式
@@ -160,7 +160,23 @@
 			. mousenter & mouseleave
 			.
 			.
-			
+
+		III. 進階事件:
+			.keypress() 
+			// 這是鍵盤按鈕按下時，觸發事件，任何按鍵皆會觸發此事件。
+			// 所以要製作快捷鍵需要在 function 內加以判斷按下的按鍵。
+			//
+			// keypress(function(event){
+			//   if( event.which == 13 ){...}
+			// })
+			// 
+			// event 為事件 event 的隱藏參數， event.which 默認為鍵盤按下的按鈕
+			// 其中常用的是 Enter 鍵 event.which 值為 13
+
+			// 注意: 若使用 javascript 原始碼:
+			// onkeypress 事件，按鍵因瀏覽器相容性問題，按鍵可能是 event.keyCode 或 event.which
+			// 需使用: var k = event.which ? event.which : event.keyCode;
+
 取得、寫入內容:
 
 	i. 文字內容:
@@ -201,7 +217,9 @@
 			$(".class").html("<h3>123</h3>");
 			// 若有多個元素符合條件，則符合的都會被更改。
 			// 若原本的元素有內容，則內容將會被覆蓋掉(即使有子元素，子元素也會被覆蓋)。
-	
+			
+			// 注意: 盡量不要用，可能有被攻擊的風險。
+
 	iii. input的value內容:
 	
 		I. 取得input的value內容:
@@ -386,10 +404,10 @@ jQuery特殊特效函式:
 		animate({
 			"width":"100px",
 			"font-Size":"20px";
-		},2000)
+		},2000,func1)
 		// 可更改多個樣式，要用""包住
 		// 第二個參數是設定動畫秒數
-		
+		// 第三個 func1 做為動畫結束後將會觸發的 function，某些地方會用到此功能	
 
 	</script>
 	</body>

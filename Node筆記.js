@@ -47,6 +47,21 @@
 
 		 > pug
 		 	( 安裝pug樣板引擎，之前叫 jade 改名)
+		 	
+
+		 > @vue/cli        				                      									//
+		 	( 這個套件和 express-generator 一樣，讓我們可以用指令建立一個 Vue 專案，通常也都是全域安裝 )
+
+		 > json-server
+		 	能使用 JSON　檔當作資料庫來使用，並能用 RESTful 的方式取得、修改資料。
+		 	( 以 JSON 檔當作一個 API server )
+
+		 > @vue/cli-service-global																//
+		 	需要全域安裝，可以直接把一個 .vue 的檔案當作 serve 來跑網頁。
+		 	在 app.vue(名子請一樣) 所在資料夾輸入 vue serve。
+
+		 > npm install --save-dev webpack
+		 	安裝 webpack，通常在要用的專案裡安裝
 
 --------------------------------------------------
 建立單一資料夾環境 + 替專案安裝express套件:
@@ -310,5 +325,100 @@ MongoDB
 	
 	
 // express3->4 版本的變更: https://expressjs.com/zh-tw/guide/migrating-4.html
+
+---------------------------------------------------
+---------------------------------------------------
+Vue 使用:
+
+1. 建立專案:
+
+	i. 安裝專案產生器: npm install @vue/cli -g  				/
+
+	ii. 建立專案: vue create Vuetext
+
+2. Run 專案:
+
+	i. 專案內執行命令提示字元:
+
+	   啟動 Server 端: npm run serve 
+	   停止 Server 端: Ctrl + c
+
+
+---------------------------------------------------
+---------------------------------------------------
+以 JSON 檔建立簡易 server 端
+
+	i. 建立資料夾
+
+	ii. 使用命令提示字元: npm init 使資料夾變為一個自訂傳案 
+
+	iii. 安裝套件: npm install json-server --save
+
+		專案建立時產生的 JSON 檔: 
+
+		長這個樣子，其中有些需要修改
+			{
+			  "name": "vuetext8",		// 專案名稱
+			  "version": "1.0.0",		// 版本
+			  "description": "",		// 專案描述
+			  "main": "index.js",		// 傳案的主要進入檔
+			  "scripts": {				// <- 此項目需要修改成現在這樣 		
+			    "json": "json-server --watch db.json --port 8888"
+			  },						// 這邊可以寫入自訂的指令，可以在命令提示字元中使用:
+			  							// EX: 輸入 npm run json
+			  							// 這行意思為: 用 json-server 幫忙把專案裡的 db.json 當作 server
+			  							// 			  並設定在埠: 8888
+			  							// 如此一來，db.json 檔案就可以代替資料庫被更改。
+
+			  "author": "",				// 作者
+			  "license": "ISC",			// 許可商
+			  "dependencies": {			// dependencies 將會紀錄所安裝的 npm 套件( local )
+			    "json-server": "^0.16.3"
+			    "XXX":"xxx"
+			  }
+			}
+
+	iv. 命令提示字元中啟用 db.json 檔案當作 server : npm run json
+
+		http://127.0.0.1:8888/content 即可看到 server 內容
+
+	v. 安裝 Postman 並可以自由使用 GET、POST、PATCH、PUT、DELETE 來更改 db.json 檔案內容。
+
+		I. 可以選擇 要使用哪種 RESTful API 方法
+			
+			GET: 讀取
+			POST: 新增一整套資料
+			PATCH: 部分修改單一項資料
+			PUT: 一次修改一套資料
+			DELETE: 刪除整套資料
+
+		II. 網址部分:
+				http://127.0.0.1:8888/content 		意思是全部的資料
+				http://127.0.0.1:8888/content/2		則可以對第2筆資料做動作
+
+		III. POST、PATCH、PUT 會用到輸入的資料:
+			一律都在 Body -> row -> JSON 中輸入
+
+		IV. 常用組合:
+
+		GET + http://127.0.0.1:8888/content 可以看到全部資料
+		GET + http://127.0.0.1:8888/content/2 可以單獨看到第二筆資料
+
+		POST + http://127.0.0.1:8888/content 可以上傳一整套資料
+
+		PUT + http://127.0.0.1:8888/content/2 可以修改第二筆資料的某一項
+
+		PATCH + http://127.0.0.1:8888/content/2 可以修改第二筆資料全部(整個取代)
+
+		DELETE + http://127.0.0.1:8888/content/2 可以刪除第二筆資料
+
+---------------------------------------------------
+使用 AXIOS :
+	在 node 環境中，可以使用替代方法取代 AJAX 發送 POST、GET 請求。
+
+	CDN:
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>		/
+
+
 
 ---------------------------------------------------

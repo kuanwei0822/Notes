@@ -68,7 +68,36 @@
 		
 		// var t = new Date();
 		// 時間函數宣告
-		
+
+		iv. 解構賦值:
+			// 用於將陣列 or 物件內的項目分出來做獨立變數，方便做使用。
+
+			I. 陣列: 使用 [] 來取得值，重點在順序:
+				let array = [1,2,3];
+				let [a,b,c] = array;
+				// a = 1 ;
+				// b = 2 ;
+				// c = 3 ;
+				陣列裡面的值被解出來，a 就可以代替 array[0] 來使用。
+
+			II. 物件: 使用 {} 來取得值，重點在變數的名子:
+				let obj = {
+					aaa:10,
+					bbb:20
+				}
+				let { aaa,bbb } = obj;
+				// aaa = 10
+				// bbb = 20 
+				名子一定要和物件內的一樣，順序可以調換不會有影響，aaa 就可以代替 obj.aaa 來使用
+
+			III. 變數的調換:
+				let a = 10;
+				let b = 20;			
+				[a,b] = [b,a];
+				// a = 20
+				// b = 10
+				變數 a,b 可以直接調換，不用借用第三個變數啦
+
 	字串&元素符號拼接:
 	
 		字串&字串 或 字串 & 元素符號 可以用加號拼接:
@@ -322,7 +351,7 @@
 		
 		v. Array.splice(): 任意增減項目，回傳被刪去的項目。
 		   
-		   I.單純刪去項目: splice(起始(編號0~n),刪除的個數);
+		   I.單純刪去項目: splice(起始(index:0~n),刪除的個數);
 		   
 			var Array1 = [0,1,2,3,4];
 			var a = Array1.splice(1,2);
@@ -395,7 +424,69 @@
 				}
 			// Math.random()將會產生0~1的隨機小數，-0.5可控制在 -0.5~0.5之間，也就是一半機率是正一半是負。
 			// return的值也會是正負隨機。
+		
+		viii. Array.indexOf(): 陣列內搜尋某個項目
+			字串、陣列都可以使用這個函式，有找到符合的項目會回傳項目的 index 位置，
+			如果未找到符合項目則回傳 -1 
+
+			var array = ['aa','bb','cc','dd'];
+			array.indexOf('bb');	// 回傳 1
+
+		ix. Array.filter(): 陣列內資料過濾好幫手
+
+			var array = [0,1,2,3,4,5,6,7,8,9];
+			function func1(value){
+				return value > 5
+			}
+
+			var newArray = array.filter(func1);	// newArray = [6,7,8,9]
 			
+				或是
+			
+			var newArray = array.filter(function(value){	// newArray = [6,7,8,9]
+				return value > 5
+			});
+
+			// 原本的陣列將不會被更改到
+			// filter 將會取出 array 中每一個元素丟進 func1 裡面第一個參數，
+			// 若 return 為 true 則保留此項目，若為 false 則將此項目過濾掉 
+
+		x. Array.forEach(): 針對每個項目內的資料做動作
+			完整版: Array.forEach(function(value,index,array){...})
+			// 這個函式會 Run 陣列裡面每一個項目。
+			// value: 每個項目的值( 注意: 值只能用來讀取，無法藉著寫入值來改變 array 裡項目的值 )  
+			// index: 索引值，當下項目的索引值
+			// array: 陣列本身( 如果要改變陣列裡面的項目，可以用 array[index] 來更改 )
+
+			I. 一般陣列:
+				var array = [1,2,3,4,5];
+				array.forEach(function(value,index,array){
+					array[index] = value + 1;		// 利用 array[index] 更改項目本身	
+				});
+				// array = [2,3,4,5,6]
+
+			II. 如果遇到物件陣列( 如資料包 ):
+				var array =[
+					{No:'1',type:'A',content:'aabbcc'},
+					{No:'2',type:'B',content:'aabbcc'},
+					{No:'3',type:'C',content:'aabbcc'},
+					{No:'4',type:'D',content:'aabbcc'},
+					{No:'5',type:'E',content:'aabbcc'}
+				];
+
+				方法一:
+				array.forEach(function(value,index,array){
+					console.log(value.No);	// value.No 可以讀取物件裡面的特定值,同理 type,content也行
+				});
+
+				方法二:
+				array.forEach(function({No,type,content},index,array){	// 用大括號把想要的值括起來
+					console.log(No);
+					console.log(type);
+					console.log(content);	// 就可以直接讀取物件裡面的值
+				});
+
+
 	資料型態:字串
 		
 		i. 宣告: 
@@ -409,7 +500,8 @@
 		
 		iii. str.indexOf( "字元",2): 搜尋特定字元(用字母找位置)，一次只找一個，回傳位置。
 			// ( 第一個input為要搜尋的字元，第二個是搜尋的起始處(包含)預設為0 )
-			
+			// 若是找不到任何一個相符字元則回傳 -1 
+
 			// str = "012a34435a5b";  其中str[3],[9]是"a"
 			// var a = str.indexOf("a");
 			// 回傳 a = 3 預設從第一個開始找，str[3]為a，所以回傳3
@@ -437,7 +529,13 @@
 			
 			III. var a = atr.split(",");
 			// 輸入","，將整個字串以","分開為各個項目存到陣列裡。也可以使用其他字元判斷。
-	
+		
+		vi. str.toLowerCase(): 字母全部轉小寫
+			str.toUpperCase(): 字母全部轉大寫
+
+		v. str.trim(): 去除字串頭尾空白或tab
+			// 只去頭尾空白，中間空白不會去掉，多用於搜尋框框輸入的資料。
+
 	資料型態:物件
 	
 		i. 宣告:
@@ -520,6 +618,10 @@
 			VII. onkeydown	// 鍵盤輸入事件
 			VIII. input 	// input元素的值發生變動時觸發
 			
+			特別:
+			I .keypress	// 鍵盤按鈕事件，會用到 event ，有瀏覽器相容問題，建議使用 jQuery。
+				// 詳細說明見 jQuery 筆記: 事件寫法-進階事件.keypress() 
+
 		iii. 事件參數: event
 			// 每當觸發事件被啟動，瀏覽器都會建立一組相關參數放在event裡
 			
@@ -870,6 +972,27 @@
 	# 中斷function: 
 		// return; 即可中斷
 	
+	# 箭頭函式: ()=>{}
+		// ES6 新增的函式寫法，補足了function(){} 在 Vue 使用上 this 的問題。
+
+		i. 當作匿名函式: 
+
+			I. 不包含參數: () => {...}
+
+			II. 包含一個參數:
+
+ 				(item1) => {...}
+
+ 				  若只有一個參數可以省略()
+			
+				item => {...}
+
+			III. 包含兩個以上參數:
+
+				(item1,item2,...) => {...}
+
+		ii. 宣告:
+
 	# 取得(寫入)元素的屬性值: 有關 X.value
 	
 		// X為元素物件，X.value 為其屬性中value="..."的值，
@@ -1214,6 +1337,30 @@
 			// 所以 bb 顯示自己記住的上一層 outer區 ，顯示 local. 而非 global
 			
 			// 這種除了 global 還夾了兩層以上的函式被稱為 閉包，可以把變數鎖起來，不會用到全域變數。
+
+	# 嚴格模式?
+		// 只要在 JS檔案第一行 或 函式內部第一行 加入 'use strict' (只能用''，不能用"")
+		// ES5 以上使用，限制某些不嚴謹的語法。
+		// 只要不是第一行使用都會自動失效。
+
+		i. 使用地方:
+			// 整個檔案:
+			// 	 JS 檔案: 第一行加入'use strict'
+			// 	 html 檔案: <script> 標籤下第一行加入'use strict'
+
+			// function:
+			//   function內部第一行
+
+		ii. 注意的部分: this
+			// 某些狀況下，function 中的 this 不會指向 window 全域物件。
+			// 但箭頭函式會。
+
+	# 所謂 window 物件:
+		// window 為瀏覽器視窗物件。本身屬於全域物件，所以可以在程式內任何地方使用。
+		// 包含許多屬性 & 方法。
+		//   屬性如: window.innerWidth 取得瀏覽器寬度。
+		//   方法如: window.open() 方法用來開啟新視窗。
+
 
 </script>
 <script>
