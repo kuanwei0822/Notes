@@ -25,11 +25,15 @@
 	// npm 版本
 
 # 安裝模組:
-	
+	*為特別建議安裝的 npm
+
 	全域(指令哪裡打都可以): npm install XXX -g
 	特定專案(指令要打在專案裡): npm install XXX --save
-	
+
 		已安裝:
+
+		Express系列:
+
 		*> nodemon 
 			(方便 build ，命令提示字元:node XXX.js 改為 nodemon XXX.js 
 			 Sublime 不用再 Cancel Build 了，直接存檔重新整理網頁就可以再次執行了，超級方便)
@@ -47,18 +51,28 @@
 
 		 > pug
 		 	( 安裝pug樣板引擎，之前叫 jade 改名)
-		 	
+		
 
-		 > @vue/cli        				                      									//
+		Vue 系列: 	
+
+		*> @vue/cli        				                      									//
 		 	( 這個套件和 express-generator 一樣，讓我們可以用指令建立一個 Vue 專案，通常也都是全域安裝 )
 
-		 > json-server
+		*> json-server
 		 	能使用 JSON　檔當作資料庫來使用，並能用 RESTful 的方式取得、修改資料。
 		 	( 以 JSON 檔當作一個 API server )
 
 		 > @vue/cli-service-global																//
 		 	需要全域安裝，可以直接把一個 .vue 的檔案當作 serve 來跑網頁。
 		 	在 app.vue(名子請一樣) 所在資料夾輸入 vue serve。
+
+		 > npm install vue-router
+		 	在要的專案內安裝，不須 --save，安裝的套件會預設自動加入 dependency。
+		 	住要功能為 單頁式網頁 + 路由功能。
+
+		 	指令: vue add router 
+		 	對 Vue 專案新增 router 資料夾 & main.js import 引入 router 中的檔案，
+		 	但原有 code 將會被取代掉，適用於已經備份好的專案，或是新增的專案。
 
 		 > npm install --save-dev webpack
 		 	安裝 webpack，通常在要用的專案裡安裝
@@ -343,6 +357,7 @@ Vue 使用:
 	   啟動 Server 端: npm run serve 
 	   停止 Server 端: Ctrl + c
 
+	ii. 或是輸入 vue ui 產生使用介面來 run
 
 ---------------------------------------------------
 ---------------------------------------------------
