@@ -1,30 +1,36 @@
 <script>
-// 註 2020/10月後，master 改為 main ，功能意義一樣。
-
-
-1. 設立Local專案資料夾(配合2.建立新專案)
-
-$ git init 
-// 設為專案資料夾(檔案庫)
-
-$ git add XXX.html
-// 新增追蹤檔案
-
-$ git commit -m "註記"
-// 將add的檔案加入更改
-
-2. Local 端同步 Remote 端
-
-$ git remote add origin https:XXX...git
-// 使用 github 提供的連結網址
-
-$ git push -u origin master
-// 同步線上並更新(第二次以上同步只要打: $ git push 就好)
+// 註 2020/10月後，master 改為 main ，功能意義一樣。後來又改回來了...
 
 
 
+1. 在自己電腦設立 Local 專案資料夾，並同步至 Remote 端( Local 有資料夾、檔案，要地一次同步至雲端 )
 
-3. Remote 端 project 要同步至自己電腦( Local 無任何資料夾 ):
+
+	i. 使用 git bash 進入要同步的專案資料夾
+
+		指令: $ git init 
+		// 將資料夾設為 git 專案資料夾，此時會有( master )出現在資料夾後面
+
+		指令: $ git add XXX.html
+		// 新增要上傳的檔案
+
+		指令: $ git commit -m "註記"
+		// 將 add 的檔案預備上傳
+
+
+	ii. Github 網站上新增一個同名專案，此時會提供一個連結網址 https:XXX...git
+
+		回到 git bash 進入專案資料夾。
+
+		指令: $ git remote add origin https:XXX...git
+		// 使用 github 提供的連結網址
+
+		指令: $ git push -u origin master
+		// 完成同步線上並更新 ( 第二次以上同步只要打: $ git push 就好 )
+
+
+
+2. Remote 端 project 要同步至自己電腦( Local 無任何資料夾，第一次從雲端同步下來 ):
 	
 	i. 找到想建立 project 的地方，以 git 進入( 不用自己新增同名資料夾 )
 	
@@ -37,7 +43,21 @@ $ git push -u origin master
 
 	iv. 同步完成。可以直接編輯自己電腦的檔案再 push 上去。
 
-4. 檔案改名:
+
+# 第一次新電腦安裝 github bash 後。git commit -m"..." 會有 "*** Please tell me who you are." 的認證問題。
+
+	要先 Run 以下命令
+	
+	git config --global user.email "you@example.com"
+	
+	git config --global user.name "Your Name"
+	
+	第一次新電腦安裝也會有認證問題。 git push 會有認證問題，瀏覽器登錄即可。
+
+
+
+
+3. 檔案改名:
 	
 	i. 在 local 端，直接複製要改的檔案，並更改名子。
 	
@@ -47,7 +67,7 @@ $ git push -u origin master
 	
 	iv. git push again， Remote 端會自動刪去 local 端刪除的檔案。
 
-5. repository 裡的資料夾改名:
+4. repository 裡的資料夾改名:
 	
 	i. Remote 端的 setting 可以更改名字
 	
