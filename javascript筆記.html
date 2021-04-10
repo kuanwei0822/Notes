@@ -49,16 +49,38 @@
 	變數宣告觀念:
 	
 		i. var: [函式作用域] 可用範圍以function為界，以外就無法使用。
-		//	var宣告全域變數: 可用於任何地方。
+			
+			var宣告全域變數: 可用於任何地方，包含其他檔案中。
 		//	var宣告區域變數: 可用於當前宣告的function
 		//  全域變數可以被使用在各個function區塊內，but 區域變數無法離開當前function。
-			
-		ii. let & const: [區塊作用域] 以更小的區塊if, for作為邊界，以外無法使用。
-		//	let在for, if中宣告: for, if 外的地方皆無法使用
-		//	const在for, if宣告: 同樣for, if 外的地方皆無法使用，一開始必須指定值，
-		//						且無法更改或是重複宣告新值(當pi等固定參數使用)
 		
-		iii. new 系列宣告:
+		ii. let: [區塊作用域] 以使用{}的 if, for 或是自訂的 {} 為界，以外就無法使用。
+
+			I. let 不會有 Hoisting 作用
+				
+				EX:
+					console.log(a);	// 會 Error
+					let a = 10;
+
+			II. 在全域或區塊中宣告:
+
+				i. let 宣告在 { } 區塊中: 只作用於區塊中。
+
+					EX: if 或 for 中，或是自訂一個 {...} 區塊 在裡面宣告也可。
+						{
+							let b = 20;
+						}
+
+				ii. let 宣告在全域中: 不會成為全域變數，只作用於此 .js 檔案中。
+
+					EX: 一個 .js 檔案有宣告 let a = 10; ，引入另一檔案，將不會在另一檔案生效。
+
+
+
+		iii. const: [區塊作用域] 和 Let 用法一樣，但是一開始必須賦值，而且之後無法再更改。
+		
+
+		iv. new 系列宣告:
 		
 		// var array1 = new Array(3);
 		// 陣列宣告
@@ -69,7 +91,7 @@
 		// var t = new Date();
 		// 時間函數宣告
 
-		iv. 解構賦值:
+		v. 解構賦值:
 			// 用於將陣列 or 物件內的項目分出來做獨立變數，方便做使用。
 
 			I. 陣列: 使用 [] 來取得值，重點在順序:
@@ -890,7 +912,14 @@
 <!-- javascript觀念 -->
 <script>
 進階觀念:
-	
+	# function 宣告:
+
+		i. funciton func1(){...};
+
+		
+		ii. var func1 =function(){...};
+
+
 	# function 觸發原則:
 	
 		i. func有括號就會自動觸發:
@@ -928,7 +957,7 @@
 			// 範例:
 			// var a =10;
 			// function func1(){...return B}
-			// var c = func1(a);
+			// var c = func1(a);	
 			
 			// a=10 傳入func1之後運算出來的B就會藉著return回傳出來，以一個變數c承接。
 			// 注意:return有break效果，return之後，return以下的程式碼皆不再執行
@@ -973,7 +1002,8 @@
 		// return; 即可中斷
 	
 	# 箭頭函式: ()=>{}
-		// ES6 新增的函式寫法，補足了function(){} 在 Vue 使用上 this 的問題。
+
+		ES6 新增的函式寫法，補足了function(){} 在 Vue 使用上 this 的問題。
 
 		i. 當作匿名函式: 
 
@@ -992,6 +1022,26 @@
 				(item1,item2,...) => {...}
 
 		ii. 宣告:
+
+			I. const func1 = (val) => {...};
+				標準用法。
+
+			II. const func1 = val => {...};
+				當參數只有一個時可省略小括號。
+
+			III. const func1 = val => ...;
+				單行時可以省略大括號，但是...自帶 return 效果，要注意。
+
+		iii. 單行函式:
+
+			I. () =>  ...
+			II () => {...}
+
+			I, II 完全不一樣喔!
+
+			I. 的函式中 ... 會被視為 return 的內容(也就是說他自帶 return，但是省略)
+			II. 的函式中 {...}並沒有 return 效果，要自己加。
+			So. () => ... 等於 () => {return ... } 才成立。
 
 	# 取得(寫入)元素的屬性值: 有關 X.value
 	

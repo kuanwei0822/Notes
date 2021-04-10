@@ -348,7 +348,7 @@ Vue 使用:
 
 	i. 安裝專案產生器: npm install @vue/cli -g  				/
 
-	ii. 建立專案: vue create Vuetext
+	ii. 建立專案: vue create vuetext ( 專案名稱不能大寫 )
 
 2. Run 專案:
 

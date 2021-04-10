@@ -30,6 +30,11 @@
 		</script>
 	</body>
 
+Vue 綁定縮寫:
+
+	v-bind	=> :
+	v-on	=> @
+
 -----------------------------------------------------------------------------------
 HTML 綁定:
 
@@ -367,19 +372,21 @@ Vue 功能:
 						in-out : 一次會出現兩個動畫元素
 
 					III. appear 剛進入網頁時就會有動畫效果
-			
+				
+				被包住的元素要使用 :key 來區分。
+
 			II. CSS 中，可以使用特殊 class 來設定此動畫:
 
 				( 以 opacity 示範 )
 				進入的動畫:
-					fade-enter{ opacity:0 }							動畫前狀態(靜態)
-					fade-enter-active{ transition:opacity 1s }		動畫中狀態(動態)
-					fade-enter-to{ opacity:1 }						動畫後狀態(靜態)
+					.fade-enter{ opacity:0 }							動畫前狀態(靜態)
+					.fade-enter-active{ transition:opacity 1s }		動畫中狀態(動態)
+					.fade-enter-to{ opacity:1 }						動畫後狀態(靜態)
 
 				淡出的動畫:
-					fade-leave{ opacity:1 }							動畫前狀態(靜態)
-					fade-leave-active{ transition:opacity 1s }		動畫中狀態(動態)
-					fade-leave-to{ opacity:0 }						動畫後狀態(靜態)
+					.fade-leave{ opacity:1 }							動畫前狀態(靜態)
+					.fade-leave-active{ transition:opacity 1s }		動畫中狀態(動態)
+					.fade-leave-to{ opacity:0 }						動畫後狀態(靜態)
 
 		ii. 以 jQuery 做動畫( 記得要引入 jQuery CDN )
 			
@@ -673,6 +680,11 @@ component 子組件:
 			    component: () => import('../views/About.vue')	// 設定要綁定的組件
 			    // 主頁載入時，只會把此分頁做預處理(status:304)，不會真正 loading 進來
 			    // 只有在點擊連結進入時才會完全載入(status:200)
+
+			    // import('...') 為 import 動態引入用法
+			    // 當你在 components 裡面使用 import 的時候，可以應用懶加載( lazy-loaded )的方式來達成。
+			  	// 懶加載( lazy-loaded ):連至此路由才會下載資源
+			  	// ()=> 匿名函式中的 return 裝著 import('...')
 			  }
 
 			  // router 提供兩種綁定組件的的方式。
@@ -834,6 +846,38 @@ router 的自帶參數 query & params :
 					// 做的事情和上面一樣，我只是要監聽參數，並刷新頁面
 				}
 			}
+
+
+
+Vue 綁定 CSS 值:
+	
+	<div :style="{ color:data1,fontSize:data2 }" ></div>										/
+	
+	data(){
+		return{ 
+			data1:"red",
+			data2:20 + "px"
+		}
+	}
+
+	以 style 屬性包裹，裏頭以物件方式放 CSS 屬性(記得要 CamelCase)，可以綁定資料。
+
+
+Vue 綁定 class:
+
+	<div :class="{ active:data3 }" ></div>							/
+	data(){
+		return{
+			data3: true
+		}
+	}
+
+	class 中以物件放會用到的 class， active 為 class 名稱， data3 則決定此 class 是否生效。
+	data3 也可以使用運算式，EX: :class="{ active: data4 == 1 }"
+
+
+Img 的 src 如果為資料綁定內容，將會被當作字串失效，要使用 import 引入。
+
 -----------------------------------------------------------------------------------
 觀念:
 
@@ -1011,4 +1055,11 @@ router 的自帶參數 query & params :
     	--> beforeDestory
 
     	--> destroyed
+
+Vue 注意事項:
+	
+	# 使用 export default {...} 時 default 後面的空格要空，否則內容會失效。
+
+	# router-link 標籤 事件無法被觸發，解決: 事件加上.native 
+		EX: @click.native="handler"
 

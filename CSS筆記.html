@@ -75,6 +75,11 @@
 			<option value = "1">aaa</option>
 		</select>
 			使用 value 送出表單時，會送出 value 值，若沒有用 value 則會送出 option 內容
+			
+			注意: onclick 對 option 無法生效，要使用 onchange 事件，
+		    	 選擇到的 option 將會依照 value 作為 input 值。
+
+		   	注意: option 可以更改顏色，but 無法更改尺寸。
 
 		<a href="URL" >連結文字</a>
 			target:
@@ -257,13 +262,14 @@
 			 應用於block水平排列，與float:left有同樣效果，且不必清除浮動，
 			 如果應用的html block元素間有空格或換行，實際排版時也會空一格，
 			 切版時需要十分注意 -->
-		<!-- 注意:此時text-align:center有效，因為是以inline的排列方式 -->
+			注意: 此時text-align:center有效，因為是以inline的排列方式
+			注意: 最好和 vertical-align:middle 一起使用，否則元素內部有文字時可能向下大量偏移
 		
 				:block
 		<!-- 區塊元素，像<div> -->
 		
 				:inline
-		<!-- 區塊元素，像<span> -->		
+		<!-- 行內元素，像<span> -->		
 		
 				:none
 		<!-- 用於隱藏block，而且隱藏後不占位-->
@@ -274,7 +280,9 @@
 			 注意: 其父元素需要設定 height-line ，其inline-block才會隨height-line高上下移動-->
 		
 		text-align:center
-		<!-- 文字水平置中，對文字inline、inline-block 元素有效，對block元素無效 -->
+		<!-- 對使用的對象本身不作用，而是對使用對象的內容產生效果，
+			 文字水平置中，對文字inline、inline-block 元素有效，對block元素無效 -->
+
 		line-height:20px;
 		<!-- 設定行高，文字垂直置中 -->
 		text-decoration:underline, line-through;
@@ -551,6 +559,7 @@
 		9/30
 		選擇器: *{	padding:0;	}
 			<!-- 使用字元「*」，整張網頁下的所有元素都會套用設定 -->
+			注意: 結構過於龐大的系統 * 可能會稍微影響一點點效能，因為每個元素都會套用到，但可以忽略(未實測)。
 	
 		屬性選取器: a[href], input[type="text"]
 			<!-- a[href] : 所有a元素中，有包含href屬性的a元素。
@@ -825,7 +834,7 @@
 	# margin重疊issue:有三種狀況會產生margin重疊:
 		
 		i. 發生於父子元素:
-			父子元素都有設定margin，父元素中，最上方元素的邊界會和父元素的邊界重疊，
+			父子元素都有設定margin，子元素中，最上方元素的邊界會和父元素的邊界重疊，
 			margin會重疊，so 元素上方的margin會是父元素margin或子元素margin中 最大的那個。
 			底部的block也會有這種狀況。
 		
@@ -846,8 +855,16 @@
 		附加: width/height:100vh; 寬度/高度和"視窗高度100%"一樣，動態顯示，改變高度，寬也會隨之改變。
 		
 	#float應用，清除浮動:看筆記本。
-		
-	960system:
+	
+	# 瀏覽器大小影響顯示出來的px直(設定為整數，可能會差 0.x px 的距離)
+
+		原因:因為瀏覽器可以設定縮放，而縮放會影響這些距離上的計算( 計算上最小單位為 1/64 px ，所以會產生小數)，
+		可能導致些微的差距，渲染出長寬為小數的 div。
+
+		參考:https://www.zhihu.com/question/48624427
+	
+
+	# 960system:
 	
 	
 	
@@ -959,6 +976,12 @@
 
 				 [media type] and ([media feature]), [media type] and ([media feature]),
 				 符合任一條件
+
+	# font-size 會影響 line-height 大小(在沒有特別指定 line-height 時候)
+		但不管 font-size 多大， line-height 有指頂的話，就會被固定。
+		line-height 可以當作文字的 height 來使用，就不用再套 div 或 span 來規範大小。
+		注意: 此方法定義出的 height 可能會有微小差距( 小於 1px )，因為瀏覽器大小會影響些微距離。
+
 ----------------------------------------------------------------------
 ??
 段落縮排:
