@@ -42,16 +42,30 @@ Java 運作原理:
 -----------------------------------------------------------------------------------
 建立環境:
 
-# 安裝 JDK( java 的運行環境 ): 
+# 安裝 JDK SE( java 的運行環境 ): 
 
 	JDK (開發工具包)
 	JRE	(運行環境)
 	兩個都會同時被安裝
 
   安裝完，加入環境變數:
-	
-	JAVA_HOME( 有設定 Tomcat 才能使用 )，Path 的變數
-	參閱: https://www.kjnotes.com/devtools/35
+
+  	有設定， Tomcat 才能使用 ，Path 的變數
+  	參閱: https://www.kjnotes.com/devtools/35
+
+
+  	新增環境變數: 
+  		
+  		JAVA HOME: C:\Program Files\Java\jdk-16
+
+	編輯環境變數 Path: 
+		
+		新增 %JAVA_HOME%\bin
+
+	環境變數 CLASSPATH 在 java 5 版本 以後已經有預設，不需要特別設定。( 現在是 Java 16 )
+	參閱: https://iter01.com/476553.html
+		  https://caterpillar.gitbooks.io/javase6tutorial/content/c2_2.html 的2.2.2
+
 	
 # IDE 工具: 
 	
@@ -65,8 +79,18 @@ Java 運作原理:
 
 	加入環境變數:
 
-		cmd 中 tomcat bin 資料夾下執行 service.bat install ，自動安裝環境變數。
-		參考: https://iter01.com/294946.html
+		新增變數參閱:
+		https://www.it145.com/9/20891.html
+		https://medium.com/@iloveitone/tomcat%E7%92%B0%E5%A2%83%E8%AE%8A%E6%95%B8%E9%85%8D%E7%BD%AE-c4670bd73984
+
+
+		新增環境變數: 
+			
+			CATALIA_HOME: C:\apache-tomcat-9.0.45
+		
+		編輯環境變數 Path: 
+
+			新增 %CATALIA_HOME%\bin
 
 
 	bin 裡面直接點擊開檔案: 
@@ -248,10 +272,12 @@ Java 運作原理:
 
 		String: 字串(以物件方式存在)	// 字串要用 " " ，不可與 ''混用
 		
-		陣列宣告: char[] a = new char[10]{...}	或 
-				 char a[] = new char[10]{...}	或
-				 char a[] ={...}	或
-				 char[] a ={...}
+		陣列宣告: char[] a = new char[]{...}	或 
+				 char a[] = new char[]{...}	或
+				 char[] a = new char[10]	或
+				 char a[] = new char[10]	或
+				 char[] a ={...}	或
+				 chara[] ={...}
 
 		注意: java 的陣列長度宣告後不可再更改，也就是不可以 push 增加或減少。
 
@@ -348,7 +374,7 @@ Java servlet:
 
 # 專案 & 伺服器 環境:
 	
-	1. 建立 dynamic 專案。target run 設定 tomcat 版本 & 路徑。勾選要 xml檔案。
+	1. 建立 dynamic Web Project 專案。target runtime 設定 tomcat 版本 & 路徑。勾選要 xml檔案。
 	2. src 新增 servlet 檔案(可以設定 package)，寫入內容。
 	3. xml 檔案配置設定:砍掉 Hello World ，新增 servlet、 servlet-mapping 。
 	4. 確認 Eclipse 已經配置好 tomcat (這樣才能從 Eclipse 啟動 tomcat)
@@ -400,7 +426,24 @@ Java servlet:
 
 			第三項: 自己決定 .class .java 檔在哪生成!
 
-		v. 正確路由:
+		v. XML 正確設定:
+
+		注意如果 XML 檔案如果 <url-pattern> 標籤設定錯誤會導致伺服器開啟錯誤	。<servlet-class> 設定錯誤會導致頁面載入錯誤。
+
+		EX:
+			// 以下標籤的斜槓號皆省略
+			<servlet>
+  				<servlet-name>Hello1<servlet-name>
+  				<servlet-class>com.fu.Hello1<servlet-class> // 注意:這邊是 package名稱 . class名稱
+  			<servlet>
+  			<servlet-mapping>
+  				<servlet-name>Hello1<servlet-name>
+  				<url-pattern>/My</url-pattern>	// 注意: 這邊的 url 一定要加 / 號
+  			<servlet-mapping>
+
+
+		vi. 正確路由:
+
 		<url-pattern> 標籤中的 /Hello1
 		網址要輸入: http://localhost:8080/Test/Hello1
 		路由要經過專案名稱(這邊是 Test )
@@ -605,7 +648,7 @@ Java JSP:
 
 	一般方式:
 
-		<%@ import XXX.XX.Class %>	// import 我們要的類別
+		<%@ page import="XXX.XX.Class" %>	// import 我們要的類別
 
 		<% Class obj = new Class() %> // 建立類別物件
 
@@ -640,6 +683,9 @@ Java JSP:
 	out
 
 # JSP 四個儲存域:
+	
+	和 request.getParameter() 儲存域不同。
+	<% %> 中宣告的 String、int ... 不包含在任何一個儲存域中。
 
 	i. page
 		
@@ -695,6 +741,126 @@ Java JSP:
 
 				pageContext.setAttribute("name","value",pageContext.APPLICATION_SCOPE);
 				pageContext.getAttribute("name",pageContext.APPLICATION_SCOPE);
+
+# EL 表達示語言:
+	
+	比起儲存域參數，表達示語言可以直接使用儲存物件的屬性、方法。
+	遇到 + 字串會做自動型別轉換成數值。
+
+	四個儲存域參數:
+		
+		XXX 可以為物件，yy 可以為屬性、方法。 屬性也可以用 pageScope.XXX["yy"] 來取得。
+		可以先用 pageContext.setAttribute("name",obj) 設值，再用 ${ pageScope.XXX.yy } 取得屬性，兩者存取相通。
+
+		${ pageScope.XXX.yy }
+		${ requestScope.XXX.yy }
+		${ sessionScope.XXX.yy }
+		${ applicationScope.XXX.yy }
+
+	request.getParameter() 中的參數:
+
+		${ param.name1 }
+
+# JSTL:
+
+	安裝:
+
+		i. 下載網址: http://archive.apache.org/dist/jakarta/taglibs/standard/binaries/
+		   中的 jakarta-taglibs-standard-1.1.2.zip 
+
+		ii. 下載下來的壓縮包解壓縮
+			資料夾 jakarta-taglibs-standard-1.1.2 -> lib 下的 jstl.jar & standard.jar 兩個檔案拿出來( 只用這兩個檔案 )。
+
+		iii. 兩個檔案放到專案中的 WEB-INF -> lib 中( 沒有 lib 就新增一個 )
+
+			lib 是 Eclipse 中加入額外 Library 的地方。
+
+		iv. [ 教學說 jar包 要加入 library 的動作，But 似乎 Eclipse 會自動加入 ]
+
+				Project -> properties -> Java Build Path -> Libraries 中 Classpath 中 Web App Libraries -> 可以看到 jstl.jar & standard.jar 兩個 jar包
+
+			[ So 以下這部分暫時沒有做 ]
+
+				把 .jar 包( library )加入 build path
+				https://stackoverflow.com/questions/2824515/how-to-add-external-library-properly-in-eclipse
+		
+				或是修改 xml
+				https://www.twcode01.com/jsp/jsp-jstl.html
+
+	使用:
+
+		JSP 檔開頭都要貼 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 引用核心標籤庫。
+
+
+		核心標籤庫: set、get、remove。
+
+			存取的值在四個儲存域中，因此也可以用 表達式、getAttribute()、setAttribute() 方法 來存取值。
+
+			設定值:
+
+				<c:set var="name" value="value" scope="page" />
+				// scope 為儲存域設定: page、require、session、application 
+				// 可以不設定，預設為 page
+
+			讀取值:
+
+				<c:get var="${ pageScope.name }" />
+				// var 為取得變數值，但要用表達式語言來顯示，<%= ... %> 也可以。
+
+			移除:
+
+				<c:remove var="name" scope="page" />
+				// scope 可以不設定，預設為 page
+
+
+		流程控制標籤庫: if、choose、when、otherwise
+
+			if:
+
+				<c:if test="${...}"> ... <c:if>	
+				// 結尾 / 號省略
+				// test 放表達式條件判斷
+
+			choose、when、otherwise:
+
+				<choose>
+					<when test="${...}"> ... <when>
+
+					<when test="${...}"> ... <when>
+
+					<when test="${...}"> ... <when>
+
+					<otherwise> ... <otherwise>
+
+				<choose>
+				// 結尾 / 號省略
+
+		迭代操作: forEach
+
+			forEach: 有兩種用法:
+
+			<c:forEach items="..." var="elem" begin="0" end="10" varStatus="status" >
+				...${status.index}...${elem}...
+			<c:forEach>
+			// 結尾 / 號省略
+			// 特定字都要用表達式顯示。
+
+			// items 放表達式語言，裏頭要有一個陣列。
+			// var 指定某變數為: 當前的那個陣列項目。
+			// begin/end 指定開始以及結束的 index
+			// varStatus 指定迴圈此次的狀態，status.count 可以顯示第 n 次的迴圈，status.index 可以顯示當前 index
+
+
+			<c:forEach var="elem" begin="0" end="10" >
+				...
+			<c:forEach>
+			// 不使用陣列，直接使用 begin / end 來決定迴圈。
+
+			// 結尾 / 號省略
+			// 特定字都要用表達式顯示。
+
+
+
 
 -----------------------------------------------------------------------------------
 函式:
