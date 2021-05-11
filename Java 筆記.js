@@ -103,7 +103,6 @@ Java 運作原理:
 
 		port="8080" 可以改掉(實測 ok)
 
------------------------------------------------------------------------------------
 語法:
 
 # package VS import: 
@@ -859,8 +858,299 @@ Java JSP:
 			// 結尾 / 號省略
 			// 特定字都要用表達式顯示。
 
+-----------------------------------------------------------------------------------
+JDBC
+
+# 驅動程序安裝:
+	
+	Java 需要一個額外的 library( jar 包 ) 來協助操作資料庫。
 
 
+	i. 下載官網的壓縮包，並加到自己的專案。( 簡單直接 )
+
+		I. 安裝 MySQL Connector/J ( MySQL JDBC 壓縮包 ):
+
+			網址: https://dev.mysql.com/downloads/connector/j/
+
+			選擇 platform independent( 無關平台 )選項，因為此 JDBC 以 Java 寫成，任何平台都可以使用。
+
+			下載 .zip 檔，並解壓縮。
+
+		II. 壓縮檔 mysql-connector-java-8.0.23 -> mysql-connector-java-X.xx 就是我們要的 library( jar 包 )。
+			複製此檔案。
+
+		III. 貼到 web 專案中的 WEB-INF -> lib 下 ( 一如其他第三方套件 )
+
+		IV. Eclipse 的 library 不用再手動 Add as library 。所這步不用幹任何事，這樣就算是引入好了。
+
+			想要查詢是否在 library 中: 
+
+			Project -> properties -> Java Build Path -> Libraries 中 Classpath 中 Web App Libraries -> 可以看到 mysql-connector-java-X.xx jar包
+
+
+	ii. 如果安裝 MySQL 時，已經有順便安裝 MySQL Connector/J 可以參考另一做法( 但原理差不多，而且比較複雜 )
+
+		參閱: https://segmentfault.com/a/1190000017382475
+
+		簡單說: 
+
+			一樣還是要 mysql-connector-java-X.xx jar包 跑不掉。
+
+			將 mysql-connector-java-X.xx jar包 加入至 User library 中( 這個 library 不會在執行時自動被加入 )
+
+			再將 User library 加至 Java Build Path 中的 library 中( 這樣此 library 才會生效 )
+
+
+# 連接 JDBC 驅動程序:
+	
+	加入好 library 之後，servlet 中使用 Class.forName("...") 函數加入，注意一定要使用 try catch ，否則會出錯。
+	其中 "com.mysql.cj.jdbc.Driver" 為 JDBC 版本 8 固定的( 但會根據 JDBC 版本有所不同 )
+
+	字串參閱: https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-usagenotes-connect-drivermanager.html
+
+	直接加入此段 code 連結 JDBC ( 如果連不上會 Error )
+
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+
+-----------------------------------------------------------------------------------
+資料庫 MySQL 連接
+
+# 連接資料庫 + 建立語句對象 + 建立結果集:
+
+	i. 連接資料庫
+
+		連接資料庫之前務必連接 JDBC 。
+
+		Connection connect = DriverManager.getConnection(url,user,password);
+
+			使用 DriverManager 靜態方法產生 Connection 物件，可以用來連接資料庫。
+			需要配合 try catch 使用，使用完需要關掉( 使用 .close() )。
+
+			可能會遇到認證問題( 目前沒遇到 )。url 後面就要接上 "?verifyServerCertificate=false&useSSL=false" 來取消認證
+
+			url="jdbc:mysql://MySQL的連接埠/資料庫名稱"
+			// MySQL的連接埠預設為: localhost:3306
+
+			user 為當初設定的 MySQL 使用者
+			// 名稱預設為 root
+
+			password 為 MySQL 的登錄密碼。
+
+		Code:
+
+			// 一般 try catch 要記得 close 
+			String user ="root";
+			String password = "as0933672360";
+			String url = "jdbc:mysql://localhost:3306/test";
+			Connection connection = null;
+
+			try {
+				connection = DriverManager.getConnection(url,user,password);
+			} catch (SQLException e) {
+				System.out.print("MySQL Error");
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+
+				// connection close 資源釋放
+				if( connection != null ) {
+					try {
+						connection.close();
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				// connection 物件 最後要關閉( 必須使用 try catch )
+			}
+
+
+	ii. 建立語句對象:
+
+		連接資料庫後緊接著 建立語句對象。
+
+		Statement statement = connection.createStatement();
+
+		使用 connection 的靜態方法產生 Statement 物件，用來建立語句對象。
+
+		建議的 import 要特別注意，選錯會 Error :
+
+			import java.sql.Statement 正確 v
+			import com.mysql.cj.xdevapi.Statement 錯誤x
+
+		Code:
+
+			String user ="root";
+			String password = "as0933672360";
+			String url = "jdbc:mysql://localhost:3306/test";
+			Connection connection = null;
+			Statement statement = null;
+
+			try {
+				connection = DriverManager.getConnection(url,user,password);
+				statement = connection.createStatement();
+			} catch (SQLException e) {
+				System.out.println("MySQL Error");
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+			
+				// statement close 資源釋放
+				if( statement != null ) {
+					try {
+						statement.close();
+						System.out.println("statement.close ok");
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				
+				// connection close 資源釋放
+				if( connection != null ) {
+					try {
+						connection.close();
+						System.out.println("connection.close ok");
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				
+				System.out.println("MySQL.close ok");
+			}
+
+
+	iii. 建立結果集:
+
+		建立語句對象之後，建立結果集就可以操作資料庫了!
+
+		ResultSet resultSet = statement.executeQuery("放MySQL的指令");
+
+		Code:
+
+			String user ="root";
+			String password = "as0933672360";
+			String url = "jdbc:mysql://localhost:3306/test";
+			
+			Connection connection = null;
+			Statement statement = null;
+			ResultSet resultSet = null;
+			String command = "select * from t1";
+			
+			try {
+				connection = DriverManager.getConnection(url,user,password);
+				statement = connection.createStatement();
+				resultSet = statement.executeQuery(command);
+			} catch (SQLException e) {
+				System.out.println("MySQL Error");
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				
+				// resultSet close 資源釋放
+							if( resultSet != null ) {
+								try {
+									resultSet.close();
+									System.out.println("resultSet.close ok");
+								} catch (SQLException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+							}
+							
+				// statement close 資源釋放
+				if( statement != null ) {
+					try {
+						statement.close();
+						System.out.println("statement.close ok");
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				
+				// connection close 資源釋放
+				if( connection != null ) {
+					try {
+						connection.close();
+						System.out.println("connection.close ok");
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+
+
+	iv. Connection 、Statement 、ResultSet 方便寫法:
+
+		三個使用後都要關閉 .close() ，會有點麻煩。 
+		Java 7 之後可以使用 try (...) {} catch(){} 自動資源釋放 的方式。
+
+		只要 try 後面加 () ，並把只要程式移到裡面，就可以直接省略 finally ，程式會自動幫我們 close() 。
+
+		Code:
+
+			// 自動資源釋放
+			String user ="root";
+			String password = "as0933672360";
+			String url = "jdbc:mysql://localhost:3306/test";
+			String command = "select * from t1";
+			
+			try ( 
+					Connection connection = DriverManager.getConnection(url,user,password); 
+					Statement statement = connection.createStatement();
+					ResultSet resultSet = statement.executeQuery(command);
+				){ System.out.println("MySQL.connection ok");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				System.out.println("MySQL.connection Error");
+				e.printStackTrace();
+			}
+
+	v. 使用預編譯:
+
+	vi. 綁定參數:
+
+	vii. 查詢、新增、修改(更新)、刪除 :
+
+		以上皆為查詢範例，故以下只有另外三種範例。
+
+-----------------------------------------------------------------------------------
+資料庫 MySQL 函數:
+
+# 對資料庫的動作 : resultSet
+
+	i. resultSet.next() : 
+
+		通常配合 while 可以取得所有 resultSet 的 資料。
+
+		while( resultSet.next() ){
+			...
+		}
+
+	ii. resultSet.getInt("aa") :
+
+		取得 欄位Field 為 "aa" 的結果。
+		該 欄位Field 的資料型態必須為 int ，返回的資料也會是 int 。
+
+
+# 多個欄位中取得最大欄位 : max( Field )
+	
+	從某個 table 中取得 Field 為 ff 的最大值。 resultSet.getInt(1) 要使用 1 。
+
+	Code:
+
+		select max( ff ) from t1 ;
+		
+		while( resultSet.next() ) {
+			System.out.printf("content:%d\n", resultSet.getInt(1));
+		}
 
 -----------------------------------------------------------------------------------
 函式:
