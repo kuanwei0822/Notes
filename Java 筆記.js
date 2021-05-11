@@ -62,7 +62,8 @@ Java 運作原理:
 		
 		新增 %JAVA_HOME%\bin
 
-	環境變數 CLASSPATH 在 java 5 版本 以後已經有預設，不需要特別設定。( 現在是 Java 16 )
+	環境變數 CLASSPATH 不建議設定
+	java 5 版本 以後已經有預設，也不需要特別設定。( 現在是 Java 16 )
 	參閱: https://iter01.com/476553.html
 		  https://caterpillar.gitbooks.io/javase6tutorial/content/c2_2.html 的2.2.2
 
@@ -103,15 +104,25 @@ Java 運作原理:
 
 		port="8080" 可以改掉(實測 ok)
 
+-----------------------------------------------------------------------------------
+指令:
+
+	*****
+
+-----------------------------------------------------------------------------------
 語法:
 
 # package VS import: 
 	
-	package( 套件 ): 檔案中只能有一個，代表這個類別( 也就是這個 .java 檔 )被裝在某特定套件裡。
-					 內容放 package 。
+	package( 套件 ): 檔案中只能有一個，代表這個類別( 也就是這個 .java 檔 )被裝在某特定套件( 目錄 )裡。
 
 	import: 用來引用別的 類別 或 類別集合。 (只有被 public 的類別才能被 import)
-			內容放 package.類別名稱 。
+			每支程式都會自動 import 兩個東西。
+
+			import java.lang.* -> 有官方提供的函數 
+
+			自己的 Package( import XXX.* ) -> 所以可以自由使用同個 package 下的 class，而不用再使用 XXX.class 全名。
+
 
 # public VS private VS package
 
@@ -142,22 +153,23 @@ Java 運作原理:
 
 # static(靜態):
 	
-	有此修飾符時，這個被宣告物會在程式一開始就被建立。
-	不需要藉著產生物件就可以直接使用。 屬性、方法皆如此。
+	有此修飾符時，這個被宣告物會在程式一開始就被建立。不需要藉著產生物件就可以直接使用。 屬性、方法皆如此。
+	記憶體中，存在 Mataspace 區，而非 heap 區。 故不需要 new 物件即可使用。
+	靜態方法、變數可以互相使用，但不能使用 物件方法、變數。( 但是 物件方法、變數 可以用靜態的 )
 
 	對於屬性:
 
+		只屬於類別的屬性，而不屬於物件(但物件仍可以更改、讀取)。
 		該屬性值具有唯一性。當一物件更改到，其他物件的此值也會被更動到。
-		可以視為只屬於類別的屬性，而不屬於物件(但物件仍可以更改、讀取)。
 
-		靜態屬性( 又稱類別變數 )。要使用此屬性，也無需建立物件即可使用。
+		靜態屬性( 又稱類別屬性 )。要使用此屬性，也無需建立物件即可使用。
 
 	對於方法:
 
 		靜態方法( 又稱類別方法 )。要使用此方法，不需要建立物件即可以使用。
 
-		若靜態方法要使用全域變數，該變數也一定要是靜態的( 呼叫的方法也要是靜態的 )。
-		( 因為程式一開始就被建立，需要的變數當然也要被建立 )
+		若靜態方法要使用其他變數、方法 ，該變數、方法也一定要是靜態的。
+		( 因為程式一開始就被建立，需要的變數當然也要一開始就被建立 )
 
 		不能使用 this 。
 
@@ -252,7 +264,7 @@ Java 運作原理:
 
 # 宣告:
 
-	資料型態(8 種):
+	基本資料型態(8 種):
 
 		正負整數:byte,short,int,long
 		byte: 	-128 ~ 127
@@ -267,29 +279,31 @@ Java 運作原理:
 		char: 字元(ASCII 碼)			// 字元要用 ''
 		boolean: 布林 TRUE & FALSE
 
+		注意: 程式碼中的變數宣告中，數字都被當作是 int 資料型態，然後才被指定為變數。
+			  所以當數字超出 int 範圍要加上 L ，浮點數要加上 f 或 d 。
+
+			  EX:
+
+			  	long a = 1000000000000; 	// error ，1000000000000 超出 int 範圍
+				long a = 1000000000000L; 	// 正確
+
+				float b = 0.123;		// error ，0.123 非 int 範圍
+				float b = 0.123f;		// 正確
+
 	常用宣告:
 
 		String: 字串(以物件方式存在)	// 字串要用 " " ，不可與 ''混用
 		
-		陣列宣告: char[] a = new char[]{...}	或 
-				 char a[] = new char[]{...}	或
-				 char[] a = new char[10]	或
+		陣列宣告: char[] a = new char[10]	或
 				 char a[] = new char[10]	或
-				 char[] a ={...}	或
-				 chara[] ={...}
+
+				 char[] a = {...}			或
+				 char a[] = {...}			或
+				 
+				 char[] a = new char[]{...}	或 
+				 char a[] = new char[]{...}
 
 		注意: java 的陣列長度宣告後不可再更改，也就是不可以 push 增加或減少。
-
-	注意: 程式碼中的變數宣告中，數字都被當作是 int 資料型態，然後才被指定為變數。
-		  所以當數字超出 int 範圍要加上 L ，浮點數要加上 f 或 d 。
-
-		  EX:
-
-		  	long a = 1000000000000; 	// error ，1000000000000 超出 int 範圍
-			long a = 1000000000000L; 	// 正確
-
-			float b = 0.123;		// error ，0.123 非 int 範圍
-			float b = 0.123f;		// 正確
 
 	字串宣告:
 
@@ -304,10 +318,10 @@ Java 運作原理:
 			ii. String a = new String("abc");
  
 			這兩種宣告方式不同。
-			i 方式，程式會在 String pool(字串池) 裡新增一個 "abc" 字串物件，並指向他。
+			i 方式: 程式會在 String pool(字串池) 裡新增一個 "abc" 字串物件，並指向他。
 			String pool (字串池) 是共用的，之後遇到 String b = "abc"; 也將指向同一字串物件。
 
-			ii 方式，程式會創造一個字串物件( 字串池之外 )，視為一個獨立物件。
+			ii 方式: 程式會創造一個字串物件( String pool 之外，heap 區內 )，視為一個獨立物件。
 			之後再遇到 String b = new String("abc"); 將會再創造另一個全新物件。
 
 			注意: String c = a + b ; 這種方式，不管a,b 是不是來自字串池，都會再創造另一個全新物件。
@@ -361,12 +375,43 @@ Java 運作原理:
 			輸入皆為字串形式，若要轉為數字可用 Integer.parseInt()
 			Integer.parseInt(strInput.nextLine());
 
+
 # 記憶體規則:
 	
-	函式內的記憶體在函示結束的時候將會被釋放。
+	函式內的記憶體在函示結束的時候將會被釋放( stack )。
 
 	But 如果是函式內建立的陣列，又被 return，陣列的記憶體將不會被清除(只會清除在函式的指向)，
-	陣列的記憶體原址仍能保留，而被使用。
+	陣列的記憶體原址仍能保留，而被使用( heap )。
+
+
+# stack & heap
+	
+	i. stack:
+
+		I. 八種基本型別宣告都直接存在這邊。
+
+		II. 區域變數，包含基本型別變數、物件變數。
+
+		III. 當該函式區塊執行完畢之後就會清空。
+
+	ii. heap:
+
+		I. 物件本體放在這邊。
+
+		II. 當物件本身沒有被任何變數指向的話，該變數記憶體就會被回收。
+
+#　jar 檔案:
+
+	*****
+
+	匯入 jar:
+
+		通常用其他人的 class 都會用 .jar 檔來包裝。
+
+		引入 .jar 檔案:
+
+			****
+
 
 -----------------------------------------------------------------------------------
 Java servlet:
@@ -858,299 +903,8 @@ Java JSP:
 			// 結尾 / 號省略
 			// 特定字都要用表達式顯示。
 
------------------------------------------------------------------------------------
-JDBC
 
-# 驅動程序安裝:
-	
-	Java 需要一個額外的 library( jar 包 ) 來協助操作資料庫。
 
-
-	i. 下載官網的壓縮包，並加到自己的專案。( 簡單直接 )
-
-		I. 安裝 MySQL Connector/J ( MySQL JDBC 壓縮包 ):
-
-			網址: https://dev.mysql.com/downloads/connector/j/
-
-			選擇 platform independent( 無關平台 )選項，因為此 JDBC 以 Java 寫成，任何平台都可以使用。
-
-			下載 .zip 檔，並解壓縮。
-
-		II. 壓縮檔 mysql-connector-java-8.0.23 -> mysql-connector-java-X.xx 就是我們要的 library( jar 包 )。
-			複製此檔案。
-
-		III. 貼到 web 專案中的 WEB-INF -> lib 下 ( 一如其他第三方套件 )
-
-		IV. Eclipse 的 library 不用再手動 Add as library 。所這步不用幹任何事，這樣就算是引入好了。
-
-			想要查詢是否在 library 中: 
-
-			Project -> properties -> Java Build Path -> Libraries 中 Classpath 中 Web App Libraries -> 可以看到 mysql-connector-java-X.xx jar包
-
-
-	ii. 如果安裝 MySQL 時，已經有順便安裝 MySQL Connector/J 可以參考另一做法( 但原理差不多，而且比較複雜 )
-
-		參閱: https://segmentfault.com/a/1190000017382475
-
-		簡單說: 
-
-			一樣還是要 mysql-connector-java-X.xx jar包 跑不掉。
-
-			將 mysql-connector-java-X.xx jar包 加入至 User library 中( 這個 library 不會在執行時自動被加入 )
-
-			再將 User library 加至 Java Build Path 中的 library 中( 這樣此 library 才會生效 )
-
-
-# 連接 JDBC 驅動程序:
-	
-	加入好 library 之後，servlet 中使用 Class.forName("...") 函數加入，注意一定要使用 try catch ，否則會出錯。
-	其中 "com.mysql.cj.jdbc.Driver" 為 JDBC 版本 8 固定的( 但會根據 JDBC 版本有所不同 )
-
-	字串參閱: https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-usagenotes-connect-drivermanager.html
-
-	直接加入此段 code 連結 JDBC ( 如果連不上會 Error )
-
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}	
-
------------------------------------------------------------------------------------
-資料庫 MySQL 連接
-
-# 連接資料庫 + 建立語句對象 + 建立結果集:
-
-	i. 連接資料庫
-
-		連接資料庫之前務必連接 JDBC 。
-
-		Connection connect = DriverManager.getConnection(url,user,password);
-
-			使用 DriverManager 靜態方法產生 Connection 物件，可以用來連接資料庫。
-			需要配合 try catch 使用，使用完需要關掉( 使用 .close() )。
-
-			可能會遇到認證問題( 目前沒遇到 )。url 後面就要接上 "?verifyServerCertificate=false&useSSL=false" 來取消認證
-
-			url="jdbc:mysql://MySQL的連接埠/資料庫名稱"
-			// MySQL的連接埠預設為: localhost:3306
-
-			user 為當初設定的 MySQL 使用者
-			// 名稱預設為 root
-
-			password 為 MySQL 的登錄密碼。
-
-		Code:
-
-			// 一般 try catch 要記得 close 
-			String user ="root";
-			String password = "as0933672360";
-			String url = "jdbc:mysql://localhost:3306/test";
-			Connection connection = null;
-
-			try {
-				connection = DriverManager.getConnection(url,user,password);
-			} catch (SQLException e) {
-				System.out.print("MySQL Error");
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} finally {
-
-				// connection close 資源釋放
-				if( connection != null ) {
-					try {
-						connection.close();
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-				// connection 物件 最後要關閉( 必須使用 try catch )
-			}
-
-
-	ii. 建立語句對象:
-
-		連接資料庫後緊接著 建立語句對象。
-
-		Statement statement = connection.createStatement();
-
-		使用 connection 的靜態方法產生 Statement 物件，用來建立語句對象。
-
-		建議的 import 要特別注意，選錯會 Error :
-
-			import java.sql.Statement 正確 v
-			import com.mysql.cj.xdevapi.Statement 錯誤x
-
-		Code:
-
-			String user ="root";
-			String password = "as0933672360";
-			String url = "jdbc:mysql://localhost:3306/test";
-			Connection connection = null;
-			Statement statement = null;
-
-			try {
-				connection = DriverManager.getConnection(url,user,password);
-				statement = connection.createStatement();
-			} catch (SQLException e) {
-				System.out.println("MySQL Error");
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} finally {
-			
-				// statement close 資源釋放
-				if( statement != null ) {
-					try {
-						statement.close();
-						System.out.println("statement.close ok");
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-				
-				// connection close 資源釋放
-				if( connection != null ) {
-					try {
-						connection.close();
-						System.out.println("connection.close ok");
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-				
-				System.out.println("MySQL.close ok");
-			}
-
-
-	iii. 建立結果集:
-
-		建立語句對象之後，建立結果集就可以操作資料庫了!
-
-		ResultSet resultSet = statement.executeQuery("放MySQL的指令");
-
-		Code:
-
-			String user ="root";
-			String password = "as0933672360";
-			String url = "jdbc:mysql://localhost:3306/test";
-			
-			Connection connection = null;
-			Statement statement = null;
-			ResultSet resultSet = null;
-			String command = "select * from t1";
-			
-			try {
-				connection = DriverManager.getConnection(url,user,password);
-				statement = connection.createStatement();
-				resultSet = statement.executeQuery(command);
-			} catch (SQLException e) {
-				System.out.println("MySQL Error");
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} finally {
-				
-				// resultSet close 資源釋放
-							if( resultSet != null ) {
-								try {
-									resultSet.close();
-									System.out.println("resultSet.close ok");
-								} catch (SQLException e) {
-									// TODO Auto-generated catch block
-									e.printStackTrace();
-								}
-							}
-							
-				// statement close 資源釋放
-				if( statement != null ) {
-					try {
-						statement.close();
-						System.out.println("statement.close ok");
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-				
-				// connection close 資源釋放
-				if( connection != null ) {
-					try {
-						connection.close();
-						System.out.println("connection.close ok");
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-
-
-	iv. Connection 、Statement 、ResultSet 方便寫法:
-
-		三個使用後都要關閉 .close() ，會有點麻煩。 
-		Java 7 之後可以使用 try (...) {} catch(){} 自動資源釋放 的方式。
-
-		只要 try 後面加 () ，並把只要程式移到裡面，就可以直接省略 finally ，程式會自動幫我們 close() 。
-
-		Code:
-
-			// 自動資源釋放
-			String user ="root";
-			String password = "as0933672360";
-			String url = "jdbc:mysql://localhost:3306/test";
-			String command = "select * from t1";
-			
-			try ( 
-					Connection connection = DriverManager.getConnection(url,user,password); 
-					Statement statement = connection.createStatement();
-					ResultSet resultSet = statement.executeQuery(command);
-				){ System.out.println("MySQL.connection ok");
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				System.out.println("MySQL.connection Error");
-				e.printStackTrace();
-			}
-
-	v. 使用預編譯:
-
-	vi. 綁定參數:
-
-	vii. 查詢、新增、修改(更新)、刪除 :
-
-		以上皆為查詢範例，故以下只有另外三種範例。
-
------------------------------------------------------------------------------------
-資料庫 MySQL 函數:
-
-# 對資料庫的動作 : resultSet
-
-	i. resultSet.next() : 
-
-		通常配合 while 可以取得所有 resultSet 的 資料。
-
-		while( resultSet.next() ){
-			...
-		}
-
-	ii. resultSet.getInt("aa") :
-
-		取得 欄位Field 為 "aa" 的結果。
-		該 欄位Field 的資料型態必須為 int ，返回的資料也會是 int 。
-
-
-# 多個欄位中取得最大欄位 : max( Field )
-	
-	從某個 table 中取得 Field 為 ff 的最大值。 resultSet.getInt(1) 要使用 1 。
-
-	Code:
-
-		select max( ff ) from t1 ;
-		
-		while( resultSet.next() ) {
-			System.out.printf("content:%d\n", resultSet.getInt(1));
-		}
 
 -----------------------------------------------------------------------------------
 函式:

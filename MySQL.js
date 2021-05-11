@@ -40,82 +40,22 @@ MySQL 安裝: 第二次以上安裝
 	
 
 --------------------------------------------------
-系統指令:
 
-# 登入 mysql 命令:
+服務啟動:(雷同 mongoDB)
 	
-	要編輯環境變數 Path: 新增 C:\Program Files\MySQL\MySQL Server 8.0\bin 才能直接下指令。否則要到該路徑才能使用以下命令。
+	啟動服務: net start mysql
 
+	停止服務: net stop mysql
+
+
+登入 mysql 命令:
+	
 	mysql -h localhost -u root -p
 
 	輸入密碼
 
-
-# 離開 mysql 登錄環境:
+離開 mysql 登錄環境:
 
 	exit
-
---------------------------------------------------
-一般指令:
-
-# 資料分層:
-	
-	i. databases 資料庫 : 有系統的、自己建立的資料庫。
-
-	ii. table 資料表 : 每個資料庫裡可以有多個 table ，每個 table 規則內容可能都不一樣。
-
-	iii. describe : 這個 table 的結構，裡面包含這個 table 的資料規則。
-
-	iv. Data : 這個 table 裏頭真正的資料表，依照資料的結構規則而成。可以 新增，修改、查詢。
-
-
-# 資料庫:
-
-	i. show databases; 查看資料庫 
-
-		顯示現有資料庫。基本上我們只使用 mysqul 或 自己建立的 當作儲存資料的資料庫。
-
-	ii. create database name; 創造資料庫
-
-		name 為資料庫名。
-
-	iii. drop database name; 刪除資料庫
-
-		name 為資料庫名。
-
-	iv. use name; 進入資料庫
-
-		進入建立好的資料庫，name 為資料庫名。
-
-
-# table :
-	
-	使用 use 進入資料庫之後可以做的動作。
-
-	i. show tables; 查看 table
-
-	ii. create table tab_name(
-			col_name col_type ... 
-		)
-
-	iii. drop table tab_name; 刪除 table
-
-# 查看 table 結構 & 裏頭資料:
-
-	i. desc tab_name; 查看 tab 結構
-
-	ii. select * from tab_name; 查看 tab 表的資料。
-
-
---------------------------------------------------
-Java 上 MySQL code 請參閱 Java 筆記。
-
-
---------------------------------------------------
-// 服務啟動:(雷同 mongoDB)
-	
-// 	啟動服務: net start mysql
-
-// 	停止服務: net stop mysql
 --------------------------------------------------
 
