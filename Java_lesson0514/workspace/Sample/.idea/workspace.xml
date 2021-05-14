@@ -1,0 +1,696 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="CountDown" />
+    </artifacts-to-build>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="109d6430-b889-4f06-93d3-10c6165199d1" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/lib/CountDown.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exam/e8/Employees.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exam/e8/ParseCSV.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exam/e9/Employee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exam/e9/SortList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Eclipse補充.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.mylyn/.taskListIndex/segments_1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.mylyn/.taskListIndex/write.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.mylyn/.tasks.xml.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.mylyn/repositories.xml.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.mylyn/tasks.xml.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.core.resources/.history/42/700eb5ee06c900181116a6fb6526d3a3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.core.resources/.projects/6/.indexes/e4/history.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.core.resources/.root/.indexes/history.version" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.core.resources/.root/.indexes/properties.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.core.resources/.root/.indexes/properties.version" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.core.resources/.safetable/org.eclipse.core.resources" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.core.resources.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.debug.ui.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.epp.logging.aeri.ide.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.junit.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.launching.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.ui.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.m2e.discovery.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.mylyn.context.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.mylyn.monitor.ui.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.mylyn.tasks.ui.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.ui.editors.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.ui.ide.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.ui.workbench.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/http-cache.lucene60/segments_1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/http-cache.lucene60/write.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/local-history.lucene60/_0.cfe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/local-history.lucene60/_0.cfs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/local-history.lucene60/_0.si" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/local-history.lucene60/segments_1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/local-history.lucene60/write.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/server-config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.jdt.core/assumedExternalFilesCache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.jdt.core/externalFilesCache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.jdt.core/externalLibsTimeStamps" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.jdt.core/index.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.jdt.core/javaLikeNames.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.jdt.core/nonChainingJarsCache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.jdt.core/savedIndexNames.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.jdt.core/variablesAndContainers.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.jdt.launching/.install.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.jdt.launching/libraryInfos.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.jdt.ui/OpenTypeHistory.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.jdt.ui/QualifiedTypeNameHistory.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.jdt.ui/dialog_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.ltk.core.refactoring/.refactorings/.workspace/2018/10/40/refactorings.history" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.ltk.core.refactoring/.refactorings/.workspace/2018/10/40/refactorings.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.m2e.logback.configuration/0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.m2e.logback.configuration/logback.1.12.0.20190529-1916.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.m2e.logback.configuration/logback.1.9.1.20180912-1601.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.oomph.setup/workspace.setup" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.recommenders.news.impl/downloads/http%3A%2F%2Fwww.eclipse.org%2Fhome%2Feclipsenews.rss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.recommenders.news.impl/downloads/http%3A%2F%2Fwww.eclipse.org%2Frecommenders%2Ffeeds%2Fide.rss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.tips.ide/dialog_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.ui.intro/introstate" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.ui.workbench/dialog_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/.plugins/org.eclipse.ui.workbench/workingsets.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.metadata/version.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/4/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/4/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/4/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/4/bin/Employee.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/4/src/Employee.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/5/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/5/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/5/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/5/bin/Food.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/5/bin/Notebook.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/5/bin/Product.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/5/bin/ShoppingCart.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/5/src/Food.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/5/src/Notebook.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/5/src/Product.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/5/src/ShoppingCart.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/6/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/6/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/6/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/6/bin/MapTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/6/bin/People.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/6/src/MapTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/6/src/People.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/7/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/7/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/7/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/7/bin/IOTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaExam/7/src/IOTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java作業-實作.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java作業.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../Java作業.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/annotation/TestCalc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/annotation/TestCalc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exam/e6/People.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exam/e6/People.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exam/e7/IOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exam/e7/IOTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exception/Exception1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exception/Exception1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inheritance/TestInheritance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inheritance/TestProduct.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inheritance/pack1/ProductABC.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inner/ClassA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inner/ClassA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inner/TestInnerClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inner/TestInnerClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/polymorphism/TestPolymorphism.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/polymorphism/TestProduct.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../keynote/Java-6D-new.key" beforeDir="false" afterPath="$PROJECT_DIR$/../keynote/Java-6D-new.key" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../keynote/Java-9D-new.key" beforeDir="false" afterPath="$PROJECT_DIR$/../keynote/Java-9D-new.key" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../omni/Java.graffle" beforeDir="false" afterPath="$PROJECT_DIR$/../omni/Java.graffle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ptt文章.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../ptt文章.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../時間預測表.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/../時間預測表.xlsx" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProjectId" id="1OiOxxYdACbRemVUIcRBtdfK6q1" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="autoscrollToSource" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ACTIVE_CLOUD_PROJECT_ACCOUNT" value="shengta.tsai@gmail.com" />
+    <property name="ACTIVE_CLOUD_PROJECT_ID" value="oceanic-sky-731" />
+    <property name="ACTIVE_CLOUD_PROJECT_NAME" value="Stock" />
+    <property name="ACTIVE_CLOUD_PROJECT_NUMBER" value="766173474560" />
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550654538698" />
+    <property name="com.google.cloudcode.ide_session_index" value="20210503_0000" />
+    <property name="extract.method.default.visibility" value="private" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.17089844" />
+    <property name="project.structure.side.proportion" value="0.27194068" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.completion" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib" />
+      <recent name="$PROJECT_DIR$/src/exam/e8" />
+      <recent name="$PROJECT_DIR$/src/exam/e7" />
+      <recent name="$PROJECT_DIR$/src/exam/e6" />
+      <recent name="$PROJECT_DIR$/src/exam/e5" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/io/reader" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="exam.e9" />
+      <recent name="network" />
+      <recent name="homework" />
+      <recent name="nio" />
+      <recent name="collection" />
+    </key>
+  </component>
+  <component name="RestClientSettings">
+    <option name="REQUEST_HISTORY">
+      <list>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="https://tip.railway.gov.tw" />
+          <option name="urlPath" value="/tra-tip-web/tip/tip001/tip112/querybytime" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="startStation" />
+                <option name="value" value="1000-臺北" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="endStation" />
+                <option name="value" value="1210-新竹" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="transfer" />
+                <option name="value" value="ONE" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="rideDate" />
+                <option name="value" value="2019/05/29" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="startOrEndTime" />
+                <option name="value" value="true" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="startTime" />
+                <option name="value" value="00:00" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="endTime" />
+                <option name="value" value="23:30" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="trainTypeList" />
+                <option name="value" value="ALL" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="query" />
+                <option name="value" value="查詢" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.TestProduct (1)">
+    <configuration name="ParseCSV" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="exam.e8.ParseCSV" />
+      <module name="source" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="exam.e8.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SortList" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="exam.e9.SortList" />
+      <module name="source" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="exam.e9.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestDate" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TestDate" />
+      <module name="source" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestProduct (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="polymorphism.TestProduct" />
+      <module name="source" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="polymorphism.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestProduct" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="inheritance.TestProduct" />
+      <module name="source" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="inheritance.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.ParseCSV" />
+      <item itemvalue="Application.SortList" />
+      <item itemvalue="Application.TestDate" />
+      <item itemvalue="Application.TestProduct" />
+      <item itemvalue="Application.TestProduct (1)" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.TestProduct (1)" />
+        <item itemvalue="Application.TestProduct" />
+        <item itemvalue="Application.TestDate" />
+        <item itemvalue="Application.SortList" />
+        <item itemvalue="Application.ParseCSV" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="109d6430-b889-4f06-93d3-10c6165199d1" name="Default" comment="" />
+      <created>1495074405252</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1495074405252</updated>
+      <workItem from="1495074408520" duration="9578000" />
+      <workItem from="1495101007462" duration="61000" />
+      <workItem from="1495101085658" duration="4254000" />
+      <workItem from="1495352254763" duration="3000" />
+      <workItem from="1495363830207" duration="11307000" />
+      <workItem from="1495454322979" duration="1069000" />
+      <workItem from="1495510898467" duration="8663000" />
+      <workItem from="1495783163093" duration="5800000" />
+      <workItem from="1496127944472" duration="81000" />
+      <workItem from="1496137083190" duration="625000" />
+      <workItem from="1496196463110" duration="3485000" />
+      <workItem from="1496287394368" duration="31861000" />
+      <workItem from="1497581832835" duration="1548000" />
+      <workItem from="1497837887450" duration="7162000" />
+      <workItem from="1498094434360" duration="602000" />
+      <workItem from="1498185601135" duration="264000" />
+      <workItem from="1498201286972" duration="6468000" />
+      <workItem from="1498448328350" duration="22052000" />
+      <workItem from="1499669189245" duration="5899000" />
+      <workItem from="1499844889136" duration="3739000" />
+      <workItem from="1500273415252" duration="4718000" />
+      <workItem from="1500455202625" duration="7000" />
+      <workItem from="1500878124413" duration="4929000" />
+      <workItem from="1500951014721" duration="5424000" />
+      <workItem from="1501125469201" duration="5000" />
+      <workItem from="1501137191352" duration="1632000" />
+      <workItem from="1501471513806" duration="1867000" />
+      <workItem from="1501808910795" duration="63000" />
+      <workItem from="1502088885132" duration="4457000" />
+      <workItem from="1502695277837" duration="2763000" />
+      <workItem from="1502848128471" duration="2892000" />
+      <workItem from="1502954103110" duration="37000" />
+      <workItem from="1503022181836" duration="19000" />
+      <workItem from="1503041112782" duration="2807000" />
+      <workItem from="1503104574534" duration="4000" />
+      <workItem from="1503974233775" duration="4132000" />
+      <workItem from="1504053689577" duration="581000" />
+      <workItem from="1504059037921" duration="2777000" />
+      <workItem from="1504151250638" duration="2805000" />
+      <workItem from="1504233408164" duration="1973000" />
+      <workItem from="1504246892515" duration="2617000" />
+      <workItem from="1504322573154" duration="309000" />
+      <workItem from="1504594946217" duration="3949000" />
+      <workItem from="1504660395507" duration="12677000" />
+      <workItem from="1504793768069" duration="20000" />
+      <workItem from="1506479697267" duration="4475000" />
+      <workItem from="1506494792639" duration="31000" />
+      <workItem from="1506494836835" duration="1682000" />
+      <workItem from="1506510580192" duration="476000" />
+      <workItem from="1506825404190" duration="27000" />
+      <workItem from="1507793488352" duration="1745000" />
+      <workItem from="1507859452517" duration="9000" />
+      <workItem from="1507880545700" duration="332000" />
+      <workItem from="1508042838868" duration="278000" />
+      <workItem from="1508290513725" duration="7337000" />
+      <workItem from="1508298288989" duration="1779000" />
+      <workItem from="1509075934734" duration="1759000" />
+      <workItem from="1509088798871" duration="10000" />
+      <workItem from="1509330479873" duration="3547000" />
+      <workItem from="1509415761819" duration="7370000" />
+      <workItem from="1509506237099" duration="40000" />
+      <workItem from="1509952658779" duration="3186000" />
+      <workItem from="1509977553797" duration="2404000" />
+      <workItem from="1510102160150" duration="205000" />
+      <workItem from="1510125059754" duration="3663000" />
+      <workItem from="1510409487925" duration="18000" />
+      <workItem from="1510538394317" duration="4896000" />
+      <workItem from="1510553518310" duration="134000" />
+      <workItem from="1510553667550" duration="3795000" />
+      <workItem from="1510730334261" duration="3509000" />
+      <workItem from="1511162960268" duration="1943000" />
+      <workItem from="1511763291397" duration="8597000" />
+      <workItem from="1511781424985" duration="10000" />
+      <workItem from="1511831891186" duration="289000" />
+      <workItem from="1512110890145" duration="2907000" />
+      <workItem from="1512118436924" duration="5000" />
+      <workItem from="1512461300966" duration="12296000" />
+      <workItem from="1512558503953" duration="598000" />
+      <workItem from="1512613445406" duration="10524000" />
+      <workItem from="1512645019650" duration="10000" />
+      <workItem from="1513838354098" duration="17290000" />
+      <workItem from="1513923594213" duration="1648000" />
+      <workItem from="1513992447560" duration="374000" />
+      <workItem from="1515652126846" duration="5443000" />
+      <workItem from="1516691533971" duration="2384000" />
+      <workItem from="1521685847440" duration="8316000" />
+      <workItem from="1521968366181" duration="5000" />
+      <workItem from="1522118448422" duration="23374000" />
+      <workItem from="1522743109622" duration="2229000" />
+      <workItem from="1523518732690" duration="14834000" />
+      <workItem from="1523844307123" duration="36800000" />
+      <workItem from="1524187688788" duration="597000" />
+      <workItem from="1524193599733" duration="6700000" />
+      <workItem from="1524235454034" duration="597000" />
+      <workItem from="1524286983371" duration="494000" />
+      <workItem from="1524368432185" duration="39000" />
+      <workItem from="1524372603619" duration="2243000" />
+      <workItem from="1524452332975" duration="594000" />
+      <workItem from="1524561226800" duration="12413000" />
+      <workItem from="1524659115900" duration="10005000" />
+      <workItem from="1524724831777" duration="5231000" />
+      <workItem from="1525051543958" duration="16000" />
+      <workItem from="1525146051929" duration="2033000" />
+      <workItem from="1526603997824" duration="4638000" />
+      <workItem from="1530586042843" duration="769000" />
+      <workItem from="1534149266151" duration="1467000" />
+      <workItem from="1534212589053" duration="10213000" />
+      <workItem from="1534401702861" duration="13078000" />
+      <workItem from="1535331840943" duration="75649000" />
+      <workItem from="1536541916684" duration="17516000" />
+      <workItem from="1536737800703" duration="88000" />
+      <workItem from="1536737905668" duration="6694000" />
+      <workItem from="1537148423668" duration="3677000" />
+      <workItem from="1537256102141" duration="3335000" />
+      <workItem from="1537408591522" duration="1893000" />
+      <workItem from="1538448949818" duration="2927000" />
+      <workItem from="1538466056708" duration="15000" />
+      <workItem from="1538963515402" duration="15762000" />
+      <workItem from="1539521001321" duration="7225000" />
+      <workItem from="1539561439795" duration="5306000" />
+      <workItem from="1539606252548" duration="14002000" />
+      <workItem from="1539736239425" duration="8985000" />
+      <workItem from="1539841152398" duration="2430000" />
+      <workItem from="1539857581320" duration="37923000" />
+      <workItem from="1541126202557" duration="1166000" />
+      <workItem from="1541135564441" duration="1459000" />
+      <workItem from="1547043490322" duration="11806000" />
+      <workItem from="1547519143369" duration="2693000" />
+      <workItem from="1547600955740" duration="4306000" />
+      <workItem from="1547773234739" duration="5478000" />
+      <workItem from="1547986703223" duration="3745000" />
+      <workItem from="1548033735447" duration="7094000" />
+      <workItem from="1548293124985" duration="7000" />
+      <workItem from="1548293150726" duration="23617000" />
+      <workItem from="1548830339000" duration="15544000" />
+      <workItem from="1550497140408" duration="585000" />
+      <workItem from="1550542050677" duration="699000" />
+      <workItem from="1550633704119" duration="1948000" />
+      <workItem from="1559131141274" duration="827000" />
+      <workItem from="1559268740284" duration="51000" />
+      <workItem from="1559268806506" duration="23000" />
+      <workItem from="1560151107714" duration="1544000" />
+      <workItem from="1560412419074" duration="4231000" />
+      <workItem from="1560734399809" duration="14501000" />
+      <workItem from="1561293754137" duration="3254000" />
+      <workItem from="1561509133481" duration="570000" />
+      <workItem from="1561597286348" duration="15000" />
+      <workItem from="1561597321769" duration="4243000" />
+      <workItem from="1561858780035" duration="13595000" />
+      <workItem from="1562045414461" duration="598000" />
+      <workItem from="1563072743370" duration="2245000" />
+      <workItem from="1563174855406" duration="1957000" />
+      <workItem from="1564457216372" duration="48000" />
+      <workItem from="1564539875101" duration="382000" />
+      <workItem from="1564540667125" duration="3154000" />
+      <workItem from="1564714951926" duration="959000" />
+      <workItem from="1564990358575" duration="628000" />
+      <workItem from="1565252858077" duration="423000" />
+      <workItem from="1565769442155" duration="903000" />
+      <workItem from="1565922095394" duration="3536000" />
+      <workItem from="1566182542554" duration="1547000" />
+      <workItem from="1566205970489" duration="53000" />
+      <workItem from="1566268989556" duration="4494000" />
+      <workItem from="1566532563076" duration="304000" />
+      <workItem from="1566959388434" duration="35000" />
+      <workItem from="1567911583128" duration="74000" />
+      <workItem from="1567911672438" duration="405000" />
+      <workItem from="1567912128894" duration="816000" />
+      <workItem from="1567913145300" duration="156000" />
+      <workItem from="1567913326363" duration="40000" />
+      <workItem from="1567913509129" duration="1814000" />
+      <workItem from="1567919458658" duration="1130000" />
+      <workItem from="1568011504287" duration="3090000" />
+      <workItem from="1568595978418" duration="13075000" />
+      <workItem from="1569035258213" duration="6000" />
+      <workItem from="1569200336054" duration="13566000" />
+      <workItem from="1569827506027" duration="30000" />
+      <workItem from="1570171990088" duration="959000" />
+      <workItem from="1570345512147" duration="34000" />
+      <workItem from="1572318132082" duration="909000" />
+      <workItem from="1573005800139" duration="10000" />
+      <workItem from="1575336087819" duration="1811000" />
+      <workItem from="1578630445187" duration="1533000" />
+      <workItem from="1578838446821" duration="6209000" />
+      <workItem from="1579139207829" duration="16000" />
+      <workItem from="1579225596563" duration="285000" />
+      <workItem from="1579248960204" duration="962000" />
+      <workItem from="1579310517096" duration="1197000" />
+      <workItem from="1579316447327" duration="599000" />
+      <workItem from="1579486406138" duration="1273000" />
+      <workItem from="1581322431897" duration="1256000" />
+      <workItem from="1581993142631" duration="1676000" />
+      <workItem from="1582173632513" duration="2656000" />
+      <workItem from="1584068489249" duration="2354000" />
+      <workItem from="1584159070792" duration="21000" />
+      <workItem from="1584159104984" duration="13000" />
+      <workItem from="1584235696194" duration="4460000" />
+      <workItem from="1584240293017" duration="644000" />
+      <workItem from="1584347277051" duration="976000" />
+      <workItem from="1587512594340" duration="1495000" />
+      <workItem from="1587521851275" duration="2849000" />
+      <workItem from="1588219354916" duration="2476000" />
+      <workItem from="1588550297114" duration="4438000" />
+      <workItem from="1589418895164" duration="3223000" />
+      <workItem from="1590378537472" duration="128000" />
+      <workItem from="1591929451518" duration="752000" />
+      <workItem from="1593308118143" duration="247000" />
+      <workItem from="1594171397619" duration="4471000" />
+      <workItem from="1595308094764" duration="462000" />
+      <workItem from="1595499055335" duration="223000" />
+      <workItem from="1595554680734" duration="1198000" />
+      <workItem from="1595564759254" duration="613000" />
+      <workItem from="1595902644219" duration="15000" />
+      <workItem from="1596112374039" duration="6838000" />
+      <workItem from="1596854581217" duration="149000" />
+      <workItem from="1597200408964" duration="2627000" />
+      <workItem from="1597238894338" duration="3071000" />
+      <workItem from="1597731452336" duration="746000" />
+      <workItem from="1597974407542" duration="2745000" />
+      <workItem from="1599873452193" duration="1420000" />
+      <workItem from="1600220327338" duration="3570000" />
+      <workItem from="1600240679386" duration="3293000" />
+      <workItem from="1600304380987" duration="1937000" />
+      <workItem from="1600844770693" duration="903000" />
+      <workItem from="1601862811403" duration="1221000" />
+      <workItem from="1601949881800" duration="95000" />
+      <workItem from="1601949994385" duration="49000" />
+      <workItem from="1602639154243" duration="3921000" />
+      <workItem from="1602664024814" duration="645000" />
+      <workItem from="1603095841688" duration="15000" />
+      <workItem from="1603593180019" duration="364000" />
+      <workItem from="1604301371148" duration="4699000" />
+      <workItem from="1604454711737" duration="2248000" />
+      <workItem from="1604816966297" duration="135000" />
+      <workItem from="1604818923210" duration="2186000" />
+      <workItem from="1604886080615" duration="6666000" />
+      <workItem from="1605407089101" duration="12820000" />
+      <workItem from="1605489852214" duration="6874000" />
+      <workItem from="1605686989385" duration="299000" />
+      <workItem from="1605776443662" duration="2023000" />
+      <workItem from="1606455707692" duration="1806000" />
+      <workItem from="1606699761429" duration="47000" />
+      <workItem from="1606699829104" duration="33000" />
+      <workItem from="1606896756137" duration="1343000" />
+      <workItem from="1607303289476" duration="612000" />
+      <workItem from="1607340389398" duration="28000" />
+      <workItem from="1607340430503" duration="11000" />
+      <workItem from="1607407604727" duration="1206000" />
+      <workItem from="1607475598264" duration="124000" />
+      <workItem from="1608474440979" duration="709000" />
+      <workItem from="1608532186167" duration="1955000" />
+      <workItem from="1608553576420" duration="12593000" />
+      <workItem from="1608683103916" duration="476000" />
+      <workItem from="1609723373480" duration="1354000" />
+      <workItem from="1611017440855" duration="44000" />
+      <workItem from="1611298060163" duration="1582000" />
+      <workItem from="1611815042572" duration="625000" />
+      <workItem from="1612171108193" duration="9000" />
+      <workItem from="1612665278139" duration="100000" />
+      <workItem from="1615187236605" duration="9893000" />
+      <workItem from="1615872750921" duration="2105000" />
+      <workItem from="1615988645730" duration="6623000" />
+      <workItem from="1616201207829" duration="587000" />
+      <workItem from="1616463409929" duration="521000" />
+      <workItem from="1616547205875" duration="2317000" />
+      <workItem from="1616552098674" duration="185000" />
+      <workItem from="1616665000210" duration="843000" />
+      <workItem from="1616897457769" duration="23000" />
+      <workItem from="1616899352864" duration="2972000" />
+      <workItem from="1616902408354" duration="1063000" />
+      <workItem from="1616903478394" duration="911000" />
+      <workItem from="1616977427593" duration="3400000" />
+      <workItem from="1617240458856" duration="4141000" />
+      <workItem from="1618024723712" duration="1279000" />
+      <workItem from="1618208711162" duration="303000" />
+      <workItem from="1618989615034" duration="2155000" />
+      <workItem from="1620036223711" duration="35000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/collection/Employee.java</url>
+          <line>26</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+</project>
