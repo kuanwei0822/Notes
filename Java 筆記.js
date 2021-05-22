@@ -105,9 +105,71 @@ Java 運作原理:
 		port="8080" 可以改掉(實測 ok)
 
 -----------------------------------------------------------------------------------
-指令:
+終端機命令:
 
-	*****
+# 執行流程 
+
+	.java 檔案 ---compile---> 產生 .class 檔 --- JVM---> 執行程式   
+
+# 指令: 
+
+	> javac xxx.java : 
+
+		將 xxx 檔案 compile ，產生 .class 檔。
+
+	> java Xxx :
+
+		將 Xxx 類別以 JVM 執行。
+
+	> -classpath c:\... : 	// javac 不能用 ， java 可以
+
+		指定特定目錄。
+
+# 無 package :
+
+	程式碼:
+	
+		public class HelloWorld {
+
+			public static void main(String[] args) {
+				System.out.println("Hello World123");
+
+			}
+
+		}
+
+	I. 編輯成 java 檔案，放在任意資料夾。
+
+	II. 終端機到資料夾目錄下: 指令 > javac HelloWorld.java ---> 產生 HelloWorld.class
+
+	III. 指令 > java HelloWorld ---> 執行完成
+
+		注意此處 HelloWorld 為類別，並非檔案，所以不用加附檔名
+
+# 含 package :
+
+
+	程式碼:
+	
+		package test; // 加了 package
+
+		public class HelloWorld {
+
+			public static void main(String[] args) {
+				System.out.println("Hello World123");
+
+			}
+
+		}
+
+	I. 編輯成 java 檔案，放在 test 資料夾( 此時 test 資料夾被當作是 package )，test 資料夾則可以任意放。
+
+	II. 終端機到 test 資料夾裡面: 指令 > javac HelloWorld.java ---> 產生 HelloWorld.class  // 實測 javac 指令無法使用 -classpath 
+
+	II. 終端機到放 test資料夾 的目錄:  指令 > java test.HelloWorld ---> 執行完成
+
+		注意執行必須連 package 一起執行才不會 Error
+
 
 -----------------------------------------------------------------------------------
 語法:
